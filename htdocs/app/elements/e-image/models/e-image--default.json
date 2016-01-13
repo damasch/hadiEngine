@@ -1,8 +1,9 @@
 {
-	"sourceDesktop": false,
-	"sourceTablet": false,
-	"sourceMiniTablet": false,
-	"sourceMobile": false,
-	"sourceMobileSmall": false,
+	"sourceDesktop": "/assets/demo/image_1200x679.png",
+	"sourceTablet": "/assets/demo/image_1024x579.jpg",
+	"sourceMiniTablet": "/assets/demo/image_768x434.jpg",
+	"sourceMobile": "/assets/demo/image_480x271.jpg",
+	"sourceMobileSmall": "/assets/demo/image_320x181.jpg",
+	"sourceDefautlt": "/assets/demo/image_1200x679.png",
 	"alt": "e-image default alt text"
 }
