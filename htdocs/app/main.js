@@ -7,6 +7,7 @@ define(function (require) {
 		require('elements/e-link/e-link'),
 		require('modules/m-contentbox/m-contentbox'),
 		require('modules/m-intro/m-intro'),
+		require('modules/m-teaser/m-teaser'),
 		require('modules/m-search/m-search'),
 		require('modules/m-linklist/m-linklist'),
 		require('modules/m-menumain/m-menumain'),
