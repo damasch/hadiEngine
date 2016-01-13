@@ -5,6 +5,7 @@ define(function (require) {
 		require('grids/x-row/x-row'),
 		require('grids/x-column/x-column'),
 		require('elements/e-link/e-link'),
+		require('elements/e-image/e-image'),
 		require('modules/m-contentbox/m-contentbox'),
 		require('modules/m-intro/m-intro'),
 		require('modules/m-teaser/m-teaser'),
