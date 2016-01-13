@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<title>Template Engine</title>
+	<script src="../js/lib/smart.js"></script>
+	<link rel="stylesheet" type="text/css" href="../css/style.css" />
+</head>
+<body>
+	<g-application>
+		<g-header></g-header>
+		<g-content>
+			<x-grid>
+				<x-row type="false">
+					<x-column>1</x-column>
+					<x-column>2</x-column>
+				</x-row>
+
+				<x-row layout="1">
+					<x-column>1</x-column>
+				</x-row>
+
+				<x-row layout="1-1">
+					<x-column>1</x-column>
+					<x-column>2</x-column>
+				</x-row>
+
+				<x-row layout="1-1-1" >
+					<x-column>1</x-column>
+					<x-column>2</x-column>
+					<x-column>3</x-column>
+				</x-row>
+
+				<x-row layout="2-1">
+					<x-column>1</x-column>
+					<x-column>2</x-column>
+				</x-row>
+
+				<x-row layout="1-2">
+					<x-column>1</x-column>
+					<x-column>2</x-column>
+				</x-row>
+
+				<x-row layout="1-3">
+					<x-column>1</x-column>
+					<x-column>2</x-column>
+				</x-row>
+				<x-row layout="3-1">
+					<x-column>1</x-column>
+					<x-column>2</x-column>
+				</x-row>
+			</x-grid>
+		</g-content>
+	</g-application>
+
+	<script data-main="../js/app.js" src="../js/lib/require.js"></script>
+</body>
+</html> 

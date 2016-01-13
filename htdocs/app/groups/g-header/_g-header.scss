@@ -1,0 +1,50 @@
+
+.g-header
+{
+	border: 1px solid green;
+	width: 1024px;
+	margin: 0 auto;
+
+	&:after
+	{
+		content: "";
+		clear: both;
+		float: none;
+		display: block;
+		height: 0px;
+	}
+
+	&-logo
+	{
+		float: left;
+		width: 20%;
+		height: 100px;
+		background-color: lightgray;
+	}
+
+	&-eyebrow
+	{
+		float: right;
+		width: 70%;
+		height: 100px;
+		text-align: right;
+	}
+
+	&-mainnavi
+	{
+
+		float: left;
+		width: 73%;
+		height: 75px;
+		background-color: lightgray;
+	}
+
+	&-search
+	{
+
+		float: right;
+		width: 25%;
+		height: 75px;
+		background-color: lightgray;
+	}
+}

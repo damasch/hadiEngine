@@ -1,0 +1,43 @@
+
+/**
+ * Width's -------------------------------------------------------------
+ */
+$v-widthMobile: 480px;
+$v-widthMiniTablet: 768px;
+$v-widthTablet: 1024px;
+
+
+/**
+ * Breakpoints -------------------------------------------------------------
+ */
+/// Breakpoint for mobile devices
+/// @public
+$v-breakpointMobile: (max-width $v-widthMobile);
+
+/// Only mini tablet
+/// @public
+$v-breakpointMiniTablet: (min-width ($v-widthMobile + 1px)) (max-width $v-widthMiniTablet);
+
+/// Only mobile + mini tablet
+/// @public
+$v-breakpointMiniTabletAndBelow: (max-width $v-widthMiniTablet);
+
+/// Only mini tablet + tablet + desktop 
+/// @public
+$v-breakpointMiniTabletAndAbove: (min-width ($v-widthMobile + 1px));
+
+/// Only tablet
+/// @public
+$v-breakpointTablet: (min-width ($v-widthMiniTablet + 1px)) (max-width $v-widthTablet);
+
+/// Only mobile + mini tablet + tablet
+/// @public
+$v-breakpointTabletAndBelow: (max-width $v-widthTablet);
+
+/// Only tablet + desktop 
+/// @public
+$v-breakpointTabletAndAbove: (min-width ($v-widthMiniTablet + 1px));
+
+/// Only desktop 
+/// @public
+$v-breakpointDesktop: (min-width ($v-widthTablet + 1px));

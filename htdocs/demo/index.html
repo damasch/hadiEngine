@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Template Engine</title>
+	<script type="text/javascript" src="js/core/jquery.js"></script>
+	<script type="text/javascript" src="js/core/smart.js"></script>
+	
+	<script type="text/javascript" src="js/core/jquery.bounce.js"></script>
+	
+	<script type="text/javascript" src="app/modules/m-intro/m-intro.js"></script>
+	
+	<script type="text/javascript" src="js/application.js"></script>
+	<style type="text/css">
+		.m-intro
+		{
+			padding: 16px;
+			margin-bottom: 16px;
+			color: black;
+		}
+		.m-intro--default
+		{
+			background-color: red;
+		}
+		.m-intro--1
+		{
+			background-color: blue;
+			color: white;
+		}
+		.m-intro--2
+		{
+			background-color: yellow;
+		}
+		.m-intro--3
+		{
+			background-color: green;
+		}
+		.m-intro--4
+		{
+			background-color: aqua;
+		}
+		.m-intro--5
+		{
+			background-color: aqua;
+		}
+		
+		.bounce-call
+		{
+			padding: 16px;
+			border: 1px solid black;
+		}
+		.m-teaser
+		{
+			border: 16px solid red;
+		}
+	</style>
+</head>
+
+<body>
+	<div class="application">
+		<div class="bounce-call" data-resource="modules" data-namespace="m-intro" data-model="m-intro.json">
+			<object class="bounce-object">
+				{
+					"name": "Alternative 1000",
+					"age": 111,
+					"mod": "--1"
+				}
+			</object>
+			<div class="bounce-call" data-resource="modules" data-namespace="m-intro" data-model="m-intro-alternative-2.json">
+				<object class="bounce-object">
+					{
+						"name": "Alternative 3",
+						"age": 333,
+						"mod": "--3"
+					}
+				</object>
+			</div>
+			<div class="bounce-call" data-resource="modules" data-namespace="m-intro" data-model="m-intro-alternative-4.json">
+				<div class="bounce-call" data-resource="modules" data-namespace="m-intro" data-model="m-intro-alternative-2.json">
+					<object class="bounce-object">
+						{
+							"name": "Alternative 2",
+							"age": 111,
+							"mod": "--2"
+						}
+					</object>
+				</div>
+			</div>
+		</div>
+		<div class="bounce-call" data-resource="modules" data-namespace="m-intro" data-model="m-intro.json">
+			<div class="bounce-call" data-resource="modules" data-namespace="m-intro" data-model="m-intro-alternative-1.json">
+				<div class="bounce-call" data-resource="modules" data-namespace="m-intro" data-model="m-intro-alternative-2.json">
+				</div>
+			</div>
+			<div class="bounce-call" data-resource="modules" data-namespace="m-intro" data-model="m-intro-alternative-3.json">
+				<div class="bounce-call" data-resource="modules" data-namespace="m-intro" data-model="m-intro-alternative-4.json">
+				</div>
+			</div>
+		</div>
+		<div class="bounce-call" data-resource="modules" data-namespace="m-teaser" data-model="">
+			<object class="bounce-object">{"name": "Sascha"}</object>
+		</div>
+	</div>
+</body>
+</html> 

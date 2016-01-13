@@ -1,0 +1,10 @@
+{
+	"headline": "Fantastic Advanced",
+	"copy": "fuck yeah!!!",
+	"closer": "duhhh",
+	"image": {
+		"alt": "bild an der Seite",
+		"src": "http://local.dev.dschmidt/template_engine/htdocs/assets/demo/background_1000x300.png",
+		"position": "background"
+	}
+}

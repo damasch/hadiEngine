@@ -1,0 +1,32 @@
+{
+	"navigation": {
+		"type": "header",
+		"items": [
+			{
+				"headline": "Menue A",
+				"subline": "sub a",
+				"uid": "200"
+			},
+			{
+				"headline": "Menue B",
+				"subline": "sub b",
+				"uid": "201"
+			},
+			{
+				"headline": "Menue C",
+				"subline": "sub c",
+				"uid": "202"
+			},
+			{
+				"headline": "Menue D",
+				"subline": "sub d",
+				"uid": "203"
+			},
+			{
+				"headline": "Menue E",
+				"subline": "sub e",
+				"uid": "204"
+			}
+		]
+	}
+}

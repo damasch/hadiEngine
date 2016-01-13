@@ -1,0 +1,48 @@
+$v-fontFaceBasePath: '/fonts';
+
+
+
+/**
+ * Condensed Light
+ */
+@font-face 
+{
+	font-family: 'robotoCondensed';
+	src: url($v-fontFaceBasePath + '/roboto/RobotoCondensed-Light-webfont.eot');
+	src: url($v-fontFaceBasePath + '/roboto/RobotoCondensed-Light-webfont.eot?#iefix') format('embedded-opentype'),
+		 url($v-fontFaceBasePath + '/roboto/RobotoCondensed-Light-webfont.woff') format('woff'),
+		 url($v-fontFaceBasePath + '/roboto/RobotoCondensed-Light-webfont.ttf') format('truetype'),
+		 url($v-fontFaceBasePath + '/roboto/RobotoCondensed-Light-webfont.svg#roboto_condensedlight') format('svg');
+	font-weight: lighter;
+	font-style: normal;
+}
+
+/**
+ * Condensed Regular
+ */
+@font-face 
+{
+	font-family: 'robotoCondensed';
+	src: url($v-fontFaceBasePath + '/roboto/RobotoCondensed-Regular-webfont.eot');
+	src: url($v-fontFaceBasePath + '/roboto/RobotoCondensed-Regular-webfont.eot?#iefix') format('embedded-opentype'),
+		 url($v-fontFaceBasePath + '/roboto/RobotoCondensed-Regular-webfont.woff') format('woff'),
+		 url($v-fontFaceBasePath + '/roboto/RobotoCondensed-Regular-webfont.ttf') format('truetype'),
+		 url($v-fontFaceBasePath + '/roboto/RobotoCondensed-Regular-webfont.svg#roboto_condensedregular') format('svg');
+	font-weight: normal;
+	font-style: normal;
+}
+
+/**
+ * Condensed Bold
+ */
+@font-face 
+{
+	font-family: 'robotoCondensed';
+	src: url($v-fontFaceBasePath + '/roboto/RobotoCondensed-Bold-webfont.eot');
+	src: url($v-fontFaceBasePath + '/roboto/RobotoCondensed-Bold-webfont.eot?#iefix') format('embedded-opentype'),
+		 url($v-fontFaceBasePath + '/roboto/RobotoCondensed-Bold-webfont.woff') format('woff'),
+		 url($v-fontFaceBasePath + '/roboto/RobotoCondensed-Bold-webfont.ttf') format('truetype'),
+		 url($v-fontFaceBasePath + '/roboto/RobotoCondensed-Bold-webfont.svg#roboto_condensedbold') format('svg');
+	font-weight: bold;
+	font-style: normal;
+}

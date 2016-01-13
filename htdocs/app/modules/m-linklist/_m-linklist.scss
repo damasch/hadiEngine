@@ -1,0 +1,18 @@
+
+.m-linklist
+{
+	&-item
+	{
+		&:after
+		{
+			content: "|";
+		}
+		&:last-child
+		{
+			&:after
+			{
+				content: "";
+			}
+		}
+	}
+}

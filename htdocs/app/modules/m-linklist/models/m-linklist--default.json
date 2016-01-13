@@ -1,0 +1,22 @@
+{
+	"links": [
+		{
+			"href": "javascript();",
+			"text": "Link a",
+			"title": "Link a folgen",
+			"taget": "_self"
+		},
+		{
+			"href": "javascript();",
+			"text": "Link b",
+			"title": "Link b folgen",
+			"taget": "_self"
+		},
+		{
+			"href": "javascript();",
+			"text": "Link c",
+			"title": "Link c folgen",
+			"taget": "_self"
+		}
+	]
+}
