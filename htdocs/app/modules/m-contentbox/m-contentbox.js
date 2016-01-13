@@ -11,9 +11,6 @@ define(['require', '$', 'renderer'], function (require, renderer) {
 		initialize: function() {
 		},
 		bind: function(){
-			var module = this;
-			$(module.root).each(function(index, element){
-			});
 		}
 	};
 });
