@@ -10,22 +10,32 @@ define(['require', '$', 'renderer'], function (require, renderer) {
 		root: '.m-intro',
 		headline: '.m-intro-headline',
 		pagerLeft: '.m-intro-left',
+		pagerRight: '.m-intro-right',
 		initialize: function() {
 		},
 		bind: function(){
 
 			var module = this;
 			$(module.root).each(function(index, element){
-				$(element).find(module.headline).on('click', module.clickHeadline);
-
-				$(element).find(module.pagerLeft).on('click', module.clickLeft);
+				$(element).find(module.headline).on('click', function(event){
+					module.clickHeadline(this, event);
+				});
+				$(element).find(module.pagerLeft).on('click', function(event){
+					module.clickLeft(this, event);
+				});
+				$(element).find(module.pagerRight).on('click', function(event){
+					module.clickRight(this, event);
+				});
 			});
 		},
-		clickHeadline: function(event){
-			alert("Module " + $(this).text().trim());
+		clickHeadline: function(element, event){
+			alert("Module " + $(element).text().trim());
 		},
-		clickLeft: function(event){
-			alert("Pager left" + $(this).text().trim());
+		clickLeft: function(element, event){
+			alert("Pager left " + $(element).text().trim());
+		},
+		clickRight: function(element, event){
+			alert("Pager right " + $(element).text().trim());
 		}
 	};
 });

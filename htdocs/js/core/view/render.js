@@ -1,7 +1,7 @@
 define(['require', '$', 'smarty'], function (require, smarty) {
 
 	var path = appBaseUrl;
-	
+
 	return {
 		tags: [],
 		modules: [],
