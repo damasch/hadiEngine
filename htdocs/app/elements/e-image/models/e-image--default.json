@@ -1,6 +1,8 @@
 {
-	"href": "javascript();",
-	"title": "e-link title",
-	"text": "e-link text",
-	"target": "_self"
+	"sourceDesktop": false,
+	"sourceTablet": false,
+	"sourceMiniTablet": false,
+	"sourceMobile": false,
+	"sourceMobileSmall": false,
+	"alt": "e-image default alt text"
 }
