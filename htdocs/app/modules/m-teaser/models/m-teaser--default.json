@@ -1,10 +1,5 @@
 {
-	"headline": "M-Intro headline",
-	"copy": "M-Intro copy text",
-	"closer": "M-Intro closer text",
-	"image": {
-		"alt": "bild an der Seite",
-		"src": "http://local.dev.dschmidt/template_engine/htdocs/assets/demo/background_1000x300.png",
-		"position": "background"
-	}
+	"image": "image",
+	"type": "left",
+	"orientation": "landscape"
 }
