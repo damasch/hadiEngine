@@ -12,27 +12,46 @@
 	<g-header></g-header>
 	<g-content>
 		<x-grid>
-			<x-row>
-				<x-column>
-					<m-intro>
-						Content of the Intro
-					</m-intro>
-				</x-column>
-				<x-column>
-
-				</x-column>
-			</x-row>
-
-
 			<x-row layout="2-1">
 				<x-column>
 					<m-teaser>
-						hello
+						Teaser Text
 					</m-teaser>
 				</x-column>
-				<x-column>default</x-column>
+				<x-column>default Teaser</x-column>
 			</x-row>
-
+			<x-row layout="2-1">
+				<x-column>
+					<m-teaser type="left">
+						Teaser Text
+					</m-teaser>
+				</x-column>
+				<x-column>Teaser type left</x-column>
+			</x-row>
+			<x-row layout="2-1">
+				<x-column>
+					<m-teaser type="right">
+						Teaser Text
+					</m-teaser>
+				</x-column>
+				<x-column>Teaser type right</x-column>
+			</x-row>
+			<x-row layout="2-1">
+				<x-column>
+					<m-teaser type="top">
+						Teaser Text
+					</m-teaser>
+				</x-column>
+				<x-column>Teaser type top</x-column>
+			</x-row>
+			<x-row layout="2-1">
+				<x-column>
+					<m-teaser type="bottom">
+						Teaser Text
+					</m-teaser>
+				</x-column>
+				<x-column>Teaser type bottom</x-column>
+			</x-row>
 		</x-grid>
 	</g-content>
 </g-application>
