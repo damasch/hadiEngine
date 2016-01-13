@@ -1,0 +1,65 @@
+
+.m-teaser
+{
+	display: flex;
+	max-width: 100%;
+
+
+	&-image
+	{
+		text-align: center;
+	}
+
+	&-image,
+	&-text
+	{
+		flex: 0 1 0;
+		border: 1px solid lightgreen;
+	}
+
+	&--landscape
+	{
+		flex-direction: row;
+	}
+
+	&--landscape &-image
+	{
+		flex: 0 1 0;
+		min-width: calc(30% - 4px);
+		max-width: calc(30% - 4px);
+		margin-right: 8px;
+	}
+
+	&--landscape &-text
+	{
+		flex: 0 1 0;
+		min-width: calc(70% - 8px);
+		max-width: calc(70% - 8px);
+	}
+
+	&--portrait
+	{
+		flex-direction: column;
+	}
+
+	&--left
+	{
+		flex-direction: row;
+	}
+
+	&--right
+	{
+		flex-direction: row-reverse;
+	}
+
+	&--top
+	{
+		flex-direction: column;
+	}
+
+	&--bottom
+	{
+		flex-direction: column-reverse;
+	}
+
+}
