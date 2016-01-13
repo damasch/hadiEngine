@@ -4,7 +4,6 @@
 	display: flex;
 	max-width: 100%;
 
-
 	&-image
 	{
 		text-align: center;
@@ -17,12 +16,7 @@
 		border: 1px solid lightgreen;
 	}
 
-	&--landscape
-	{
-		flex-direction: row;
-	}
-
-	&--landscape &-image
+	&--left &-image
 	{
 		flex: 0 1 0;
 		min-width: calc(30% - 4px);
@@ -30,16 +24,26 @@
 		margin-right: 8px;
 	}
 
-	&--landscape &-text
+	&--left &-text
 	{
 		flex: 0 1 0;
 		min-width: calc(70% - 8px);
 		max-width: calc(70% - 8px);
 	}
 
-	&--portrait
+	&--right &-image
 	{
-		flex-direction: column;
+		flex: 0 1 0;
+		min-width: calc(30% - 8px);
+		max-width: calc(30% - 8px);
+	}
+
+	&--right &-text
+	{
+		flex: 0 1 0;
+		min-width: calc(70% - 4px);
+		max-width: calc(70% - 4px);
+		margin-right: 8px;
 	}
 
 	&--left
