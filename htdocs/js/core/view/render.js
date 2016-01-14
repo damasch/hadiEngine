@@ -161,7 +161,9 @@ define(['require', '$', 'smarty'], function (require, smarty) {
 			renderer.iniRoot = 'body';
 			renderer.renderRecursive(this.iniRoot).then(function()
 			{
-				renderer.bindModuleHandler();
+				renderer.bindModuleHandler().then(function(){
+					return deferred.resolve();
+				});
 			});
 			return deferred;
 		},
@@ -296,6 +298,7 @@ define(['require', '$', 'smarty'], function (require, smarty) {
 		},
 		bindModuleHandler: function()
 		{
+			var deferred = $.Deferred();
 			// bindModuleHandler the functions of an module
 			$.each(this.modules, function(index, element){
 				if(element.bind)
@@ -303,6 +306,7 @@ define(['require', '$', 'smarty'], function (require, smarty) {
 					element.bind();
 				}
 			});
+			return deferred.resolve();
 		},
 		registerModules: function(modules)
 		{

@@ -13,12 +13,12 @@
 		<source data-srcset="{$sourceMobile}" media="(min-width: 480px)" />
 	{/if}
 	{if $sourceMobileSmall}
-		<source data-srcset="{$sourceMobileSmall}" media="(min-width: 320px)" />
+		<source data-srcset="{$sourceMobileSmall}" media="(min-width: 320px)"/>
 	{/if}
 	{if $sourceDefault}
-		<img class="e-image-default" content="{$sourceDefault}" data-srcset="{$sourceDefault}" alt="{$alt}">
+		<img class="e-image-default" content="{$sourceDefault}" data-srcset="{$sourceDefault}" alt="{$sourceDefault} {$alt}">
 		<noscript>
-			<img class="e-image-fallback" content="{$sourceDefault}" src="{$sourceDefault}" alt="{$alt}">
+			<img class="e-image-fallback" content="{$sourceDefault}" src="{$sourceDefault}" alt="{$sourceDefault} {$alt}">
 		</noscript>
 	{/if}
 </picture>

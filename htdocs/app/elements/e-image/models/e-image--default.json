@@ -4,6 +4,7 @@
 	"sourceMiniTablet": "/assets/demo/image_768x434.jpg",
 	"sourceMobile": "/assets/demo/image_480x271.jpg",
 	"sourceMobileSmall": "/assets/demo/image_320x181.jpg",
-	"sourceDefautlt": "/assets/demo/image_1200x679.png",
+	"sourceDefault": "/assets/demo/image_320x181.jpg",
 	"alt": "e-image default alt text"
 }
+
