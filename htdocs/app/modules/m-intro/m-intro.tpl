@@ -1,5 +1,5 @@
 
-<section class="m-intro" style="border: 1px solid red; padding: 16px; background-color: lightgrey; margin-bottom: 20px;">
+<section class="m-intro">
 	<div class="m-intro-content">
 		{$additional}
 		<h1 class="m-intro-headline">

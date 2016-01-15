@@ -1,4 +1,10 @@
 
 .e-image
 {
+	max-width: 100%;
+
+	&-default
+	{
+		max-width: 100%;
+	}
 }

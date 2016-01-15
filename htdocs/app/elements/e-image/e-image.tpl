@@ -16,9 +16,9 @@
 		<source data-srcset="{$sourceMobileSmall}" media="(min-width: 320px)"/>
 	{/if}
 	{if $sourceDefault}
-		<img class="e-image-default" content="{$sourceDefault}" data-srcset="{$sourceDefault}" alt="{$sourceDefault} {$alt}">
+		<img class="e-image-default" src="{$sourceDefault}" alt="{$alt}">
 		<noscript>
-			<img class="e-image-fallback" content="{$sourceDefault}" src="{$sourceDefault}" alt="{$sourceDefault} {$alt}">
+			<img src="{$sourceDefault}" alt="{$alt}">
 		</noscript>
 	{/if}
 </picture>

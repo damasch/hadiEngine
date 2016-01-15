@@ -1,5 +1,6 @@
 define(function (require) {
 	var renderer = require('renderer');
+
 	renderer.registerModules([
 		// GRIDS
 		require('grids/x-grid/x-grid'),
@@ -25,6 +26,5 @@ define(function (require) {
 		require('groups/g-content/g-content')
 		]);
 	renderer.render().then(function(){
-		var engine = require('engine/app/core');
 	});
 });
