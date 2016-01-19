@@ -5,8 +5,8 @@ define(['require', '$', 'renderer'], function (require, renderer) {
 	return {
 		renderer: require('renderer'),
 		name: 'm-intro',
-		defaultModel: path + "/models/m-intro--default.json",
-		defaultTemplate: path + "/m-intro.tpl",
+		defaultModel: path + "/models/default.json",
+		defaultTemplate: path + "/view.tpl",
 		root: '.m-intro',
 		headline: '.m-intro-headline',
 		pagerLeft: '.m-intro-left',

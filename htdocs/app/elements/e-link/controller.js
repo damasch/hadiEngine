@@ -1,17 +1,16 @@
 define(['require', '$', 'renderer'], function (require, renderer) {
 
-	var path = "/grids/x-grid";
+	var path = "/elements/e-link";
 
 	return {
 		renderer: require('renderer'),
-		defaultModel: path + "/models/x-grid--default.json",
-		defaultTemplate: path + "/x-grid.tpl",
-		name: 'x-grid',
-		root: '.x-grid',
+		defaultModel: path + "/models/default.json",
+		defaultTemplate: path + "/view.tpl",
+		name: 'e-link',
+		root: '.e-link',
 		initialize: function() {
 		},
 		bind: function(){
-			return;
 		}
 	};
 });

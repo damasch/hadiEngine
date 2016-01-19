@@ -3,27 +3,27 @@ define(function (require) {
 
 	renderer.registerModules([
 		// GRIDS
-		require('grids/x-grid/x-grid'),
-		require('grids/x-row/x-row'),
-		require('grids/x-column/x-column'),
+		require('grids/x-grid/controller'),
+		require('grids/x-row/controller'),
+		require('grids/x-column/controller'),
 
 		// ELEMENTS
-		require('elements/e-link/e-link'),
-		require('elements/e-image/e-image'),
+		require('elements/e-link/controller'),
+		require('elements/e-image/controller'),
 
 		// MODULES
-		require('modules/m-contentbox/m-contentbox'),
-		require('modules/m-intro/m-intro'),
-		require('modules/m-teaser/m-teaser'),
-		require('modules/m-search/m-search'),
-		require('modules/m-linklist/m-linklist'),
-		require('modules/m-menumain/m-menumain'),
-		require('modules/m-menumainitem/m-menumainitem'),
+		require('modules/m-contentbox/controller'),
+		require('modules/m-intro/controller'),
+		require('modules/m-teaser/controller'),
+		require('modules/m-search/controller'),
+		require('modules/m-linklist/controller'),
+		require('modules/m-menumain/controller'),
+		require('modules/m-menumainitem/controller'),
 
 		// GROUPS
-		require('groups/g-application/g-application'),
-		require('groups/g-header/g-header'),
-		require('groups/g-content/g-content')
+		require('groups/g-application/controller'),
+		require('groups/g-header/controller'),
+		require('groups/g-content/controller')
 		]);
 	renderer.render().then(function(){
 	});

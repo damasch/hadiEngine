@@ -5,8 +5,8 @@ define(['require', '$', 'renderer'], function (require, renderer) {
 	return {
 		renderer: require('renderer'),
 		name: 'm-menumainitem',
-		defaultModel: path + "/models/m-menumainitem--default.json",
-		defaultTemplate: path + "/m-menumainitem.tpl",
+		defaultModel: path + "/models/default.json",
+		defaultTemplate: path + "/view.tpl",
 		root: '.m-menumainitem',
 		initialize: function() {
 		},

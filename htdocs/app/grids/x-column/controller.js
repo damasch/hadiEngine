@@ -1,16 +1,17 @@
 define(['require', '$', 'renderer'], function (require, renderer) {
 
-	var path = "/elements/e-image";
+	var path = "/grids/x-column";
 
 	return {
 		renderer: require('renderer'),
-		defaultModel: path + "/models/e-image--default.json",
-		defaultTemplate: path + "/e-image.tpl",
-		name: 'e-image',
-		root: '.e-image',
+		defaultModel: path + "/models/default.json",
+		defaultTemplate: path + "/view.tpl",
+		name: 'x-column',
+		root: '.x-column',
 		initialize: function() {
 		},
 		bind: function(){
+			return;
 		}
 	};
 });

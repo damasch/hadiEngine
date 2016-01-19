@@ -5,8 +5,8 @@ define(['require', '$', 'renderer'], function (require, renderer) {
 	return {
 		renderer: require('renderer'),
 		name: 'g-header',
-		defaultModel: path + "/models/g-header--default.json",
-		defaultTemplate: path + "/g-header.tpl",
+		defaultModel: path + "/models/default.json",
+		defaultTemplate: path + "/view.tpl",
 		root: '.g-header',
 		initialize: function() {
 		},

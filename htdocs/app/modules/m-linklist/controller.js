@@ -5,8 +5,8 @@ define(['require', '$', 'renderer'], function (require, renderer) {
 	return {
 		renderer: require('renderer'),
 		name: 'm-linklist',
-		defaultModel: path + "/models/m-linklist--default.json",
-		defaultTemplate: path + "/m-linklist.tpl",
+		defaultModel: path + "/models/default.json",
+		defaultTemplate: path + "/view.tpl",
 		root: '.m-linklist',
 		list: '.m-linklist-list',
 		item: '.m-linklist-item',
