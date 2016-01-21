@@ -1,0 +1,13 @@
+{
+  "name" : "hadi-engine-node",
+  "version" : "0.0.1",
+  "private" : true,
+  "engines" :
+  {
+    "node" : "4.2.x"
+  },
+  "dependencies" :
+  {
+    "express": "*"
+  }
+}
