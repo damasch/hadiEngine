@@ -1,51 +1,74 @@
 
-	/**
-	 * Requirements
-	 */
-	var fs = require('fs');
-	var path = require('path');
-	var S = require('string');
-	//var urls = require('../../utils/urls.js');
+/**
+ * Requirements
+ */
+var fs = require('fs');
+var path = require('path');
+var S = require('string');
+var _ = require('lodash');
+var async = require('async');
 
-	/**
-	 * Configures a dynamic template rendering handler
-	 */
-	function configure(app, configuration)
+function readAppDir(configuration, callback)
+{
+	console.log("read app dir");
+	var tasks = [];
+	var appDir = path.resolve(configuration.path.app, "");
+	var result = {};
+	result.scopes = [];
+
+	_.each(configuration.doku.scope, function(scope)
 	{
-		//Serve templates
-		app.all('/', function (request, response, next)
+		var scopeDir = path.resolve(appDir, scope);
+		if (fs.existsSync(scopeDir))
 		{
-			var dir = path.resolve(configuration.path.app);
-			var fs = require('fs');
-
-			var text = "";
-			text += "request Path " + request.path + "<br>";
-			text += dir + "<br>";
-
-			fs.readdirSync(dir, function(err, list){
-				list.forEach(function(file){
-					text += path.resolve(configuration.path.app, file) + "<br>";
-				});
-			});
-			response.send(text);
-			//Check if it is template
-			/*
-			if (S(request.path).endsWith('.j2') && fs.existsSync(configuration.path.templates + request.path))
+			result.scopes[scope] = [];
+			// var dir = path.resolve(appDir, scope);
+			_.each(fs.readdirSync(path.resolve(appDir, scope)), function(template)
 			{
-				logger.info('Serving template ' + configuration.path.templates + request.path);
-				var type = urls.parse(request.path, 'full');
-				var template = fs.readFileSync(configuration.path.templates + request.path, { encoding : 'utf8' });
-				var html = configuration.nunjucks.renderString(template, { location: type });
-				response.send(html);
+				var templateDir = path.resolve(scopeDir, template);
+				result.scopes[scope].push(templateDir);
+			});
+		}
+	});
+
+	//callback(error, result);
+	async.series(tasks, function(error)
+	{
+		callback(error, result);
+	});
+}
+
+/**
+ * Configures a dynamic template rendering handler
+ */
+function configure(app, configuration)
+{
+	console.log("Serve templates");
+	//Serve templates
+	app.all('*', function (request, response, next)
+	{
+		console.log("read app dir");
+		readAppDir(configuration, function(error, result)
+		{
+			if(!error)
+			{
+				console.log("-----------------");
+				var markup = "";
+				console.log(result.scopes);
+				console.log("-----------------");
+
+				response.send(result);
+				response.end();
+				console.log("end");
 				return;
 			}
-			*/
 			//Nope
 			next();
 		});
-	};
+	});
+};
 
-	/**
-	 * Public api
-	 */
-	module.exports = configure;
+/**
+ * Public api
+ */
+module.exports = configure;

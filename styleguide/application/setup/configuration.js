@@ -27,3 +27,9 @@
 	module.exports.server = {};
 	module.exports.server.port = 8000;
 	module.exports.server.path = path.resolve(module.exports.path.server + "/run.js");
+
+	/**
+	 * APPLICATION
+	 */
+	module.exports.doku 				= {};
+	module.exports.doku.scope			= ["grids", "elements", "modules", "groups", "templates"];

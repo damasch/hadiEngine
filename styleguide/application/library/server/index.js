@@ -14,7 +14,7 @@
 		//Create server
 		var app = express();
 		app.use(compress());
-
+		//console.log(configuration.path.doku + '/templates.js');
 		require(configuration.path.doku + '/templates.js')(app, configuration);
 
 		//Start express
@@ -22,7 +22,7 @@
 		{
 			var host = server.address().address;
 			var port = server.address().port;
-			console.log('Listening at http://%s:%s', host, port);
+			console.log('Listening at http://localhost:%s', port);
 		});
 	}
 
