@@ -33,9 +33,11 @@ function readAppDir(configuration, callback)
 				tasks.push(function (cb)
 				{
 					var templateDir = path.resolve(scopeDir, template);
-					var template
+					//var template;
+					//result.scopes[scope].push(template);
 					result.scopes[scope].push(templateParser.readTemplateDir(configuration, template, scope, scopeDir));
 					//result.scopes[scope][template] = templateParser.readTemplateDir(configuration, template, scope, scopeDir);
+					//result.scopes[scope][template]
 					cb();
 				});
 			});
