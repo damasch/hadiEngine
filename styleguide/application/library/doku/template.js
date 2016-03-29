@@ -43,20 +43,34 @@ function readTemplateDir(configuration, template, scope, scopeDir, callback)
 		templateN.view = templateN.directory + "/view.tpl";
 	}
 
-
-	if(fs.existsSync(templateN.directory + "/style.css"))
-	{
-		templateN.style.css = templateN.directory + "/_style.css";
-	}
-
-	if(fs.existsSync(templateN.directory + "/_style.scss"))
-	{
-		templateN.style._scss = templateN.directory + "/_style.scss";
-	}
-
 	if(fs.existsSync(templateN.directory + "/style.scss"))
 	{
 		templateN.style.scss = templateN.directory + "/style.scss";
+		templateN.style.modifier = "";
+		console.log("read SCSS "  + templateN.style.scss);
+		tasks.push(function (cb)
+		{
+			fs.readFile(templateN.style.scss, 'utf8', function (err,text) {
+
+				//templateN.style.modifier = data;
+				text = text.replace(/(?:\r\n|\r|\n)/g, '');
+				var res = text.match(/(?:--)([a-z0-9]*)(?:())/g);
+				var modifier = [];
+				if(res)
+				{
+					for(var i = 0; i < res.length; i++)
+					{
+						if(modifier.indexOf(res[i]) < 0)
+						{
+							modifier.push(res[i]);
+						}
+					}
+				}
+				templateN.style.modifier = modifier;
+				cb();
+			});
+			//console.log(data);
+		});
 	}
 
 	templateN.dokumentation = "/" + scope + "/" + template + "/doku.html";

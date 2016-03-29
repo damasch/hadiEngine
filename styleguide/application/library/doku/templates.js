@@ -78,7 +78,7 @@ function configure(app, configuration)
 				response.send(markup.toString());
 
 				response.end();
-				console.log(result.scopes);
+				//console.log(result.scopes);
 				console.log("END -> Get Templates");
 				return;
 			}
