@@ -26,8 +26,6 @@ function readTemplateDir(configuration, template, scope, scopeDir, callback)
 	templateN.models = [];
 
 	templateN.style = {};
-	templateN.style.css = null;
-	templateN.style._scss = null;
 	templateN.style.scss = null;
 
 	if(fs.existsSync(templateN.directory + "/info.md"))
@@ -69,16 +67,15 @@ function readTemplateDir(configuration, template, scope, scopeDir, callback)
 		tasks.push(function (cb)
 		{
 			templateN.models.push(model);
-			//var templateDir = path.resolve(scopeDir, template);
-			//var template;
-			//result.scopes[scope].push(template);
-			//result.scopes[scope].push(templateParser.readTemplateDir(configuration, template, scope, scopeDir));
-			//result.scopes[scope][template] = templateParser.readTemplateDir(configuration, template, scope, scopeDir);
-			//result.scopes[scope][template]
 			cb();
 		});
 	});
-	return templateN;
+
+	//callback after stack
+	async.series(tasks, function(error)
+	{
+		callback(error, templateN);
+	});
 }
 
 

@@ -35,7 +35,14 @@ function readAppDir(configuration, callback)
 					var templateDir = path.resolve(scopeDir, template);
 					//var template;
 					//result.scopes[scope].push(template);
-					result.scopes[scope].push(templateParser.readTemplateDir(configuration, template, scope, scopeDir));
+					templateParser.readTemplateDir(configuration, template, scope, scopeDir, function(error, templateN)
+					{
+						if(!error)
+						{
+							result.scopes[scope].push(templateN);
+						}
+					});
+					//result.scopes[scope].push(templateParser.readTemplateDir(configuration, template, scope, scopeDir));
 					//result.scopes[scope][template] = templateParser.readTemplateDir(configuration, template, scope, scopeDir);
 					//result.scopes[scope][template]
 					cb();
