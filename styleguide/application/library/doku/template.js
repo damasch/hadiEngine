@@ -10,8 +10,10 @@ var async = require('async');
 
 function readTemplateDir(configuration, template, scope, scopeDir, callback)
 {
+	// task callback list
 	var tasks = [];
 
+	// create new template object
 	var templateN = {};
 	templateN.name = template;
 	templateN.directory = path.resolve(scopeDir, template);
@@ -28,21 +30,25 @@ function readTemplateDir(configuration, template, scope, scopeDir, callback)
 	templateN.style = {};
 	templateN.style.scss = null;
 
+	// get markdown content
 	if(fs.existsSync(templateN.directory + "/info.md"))
 	{
 		templateN.info = templateN.directory + "/info.md";
 	}
 
+	// get controller js
 	if(fs.existsSync(templateN.directory + "/controller.js"))
 	{
 		templateN.controller = templateN.directory + "/controller.js";
 	}
 
+	// get view js
 	if(fs.existsSync(templateN.directory + "/view.tpl"))
 	{
 		templateN.view = templateN.directory + "/view.tpl";
 	}
 
+	// get style scss
 	if(fs.existsSync(templateN.directory + "/style.scss"))
 	{
 		templateN.style.scss = templateN.directory + "/style.scss";
@@ -55,18 +61,19 @@ function readTemplateDir(configuration, template, scope, scopeDir, callback)
 				//templateN.style.modifier = data;
 				text = text.replace(/(?:\r\n|\r|\n)/g, '');
 				var res = text.match(/(?:--)([a-z0-9]*)(?:())/g);
-				var modifier = [];
+				var modifiers = [];
 				if(res)
 				{
 					for(var i = 0; i < res.length; i++)
 					{
-						if(modifier.indexOf(res[i]) < 0)
+						var modifier = res[i].replace("--", "");
+						if(modifiers.indexOf(modifier) < 0)
 						{
-							modifier.push(res[i]);
+							modifiers.push(modifier);
 						}
 					}
 				}
-				templateN.style.modifier = modifier;
+				templateN.style.modifier = modifiers;
 				cb();
 			});
 			//console.log(data);
