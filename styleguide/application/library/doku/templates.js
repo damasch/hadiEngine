@@ -26,6 +26,7 @@ function readAppDir(configuration, callback)
 		var scopeDir = path.resolve(appDir, scope);
 		if (fs.existsSync(scopeDir))
 		{
+			console.log("\tresolve scope: "  + scope );
 			result.scopes[scope] = [];
 			// var dir = path.resolve(appDir, scope);
 			_.each(fs.readdirSync(path.resolve(appDir, scope)), function(template)
@@ -33,8 +34,6 @@ function readAppDir(configuration, callback)
 				tasks.push(function (cb)
 				{
 					var templateDir = path.resolve(scopeDir, template);
-					//var template;
-					//result.scopes[scope].push(template);
 					templateParser.readTemplateDir(configuration, template, scope, scopeDir, function(error, templateN)
 					{
 						if(!error)
@@ -42,9 +41,6 @@ function readAppDir(configuration, callback)
 							result.scopes[scope].push(templateN);
 						}
 					});
-					//result.scopes[scope].push(templateParser.readTemplateDir(configuration, template, scope, scopeDir));
-					//result.scopes[scope][template] = templateParser.readTemplateDir(configuration, template, scope, scopeDir);
-					//result.scopes[scope][template]
 					cb();
 				});
 			});
@@ -85,7 +81,6 @@ function configure(app, configuration)
 			//Nope
 			next();
 		});
-		console.log("end");
 	});
 };
 

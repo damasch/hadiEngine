@@ -12,6 +12,7 @@ function readTemplateDir(configuration, template, scope, scopeDir, callback)
 {
 	// task callback list
 	var tasks = [];
+	console.log("\tread Template:\t" + template);
 
 	// create new template object
 	var templateN = {};
@@ -53,7 +54,7 @@ function readTemplateDir(configuration, template, scope, scopeDir, callback)
 	{
 		templateN.style.scss = templateN.directory + "/style.scss";
 		templateN.style.modifier = "";
-		console.log("read SCSS "  + templateN.style.scss);
+
 		tasks.push(function (cb)
 		{
 			fs.readFile(templateN.style.scss, 'utf8', function (err,text) {
