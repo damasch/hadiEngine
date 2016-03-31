@@ -3,8 +3,8 @@
 	/**
 	 * Requirements
 	 */
-	var compress = require('compression');
-	var express = require('express');
+	var compress 		= require('compression');
+	var express 		= require('express');
 
 	/**
 	 * Configures the application server
@@ -14,8 +14,18 @@
 		//Create server
 		var app = express();
 		app.use(compress());
+
+		//Setup nSmarty
+		require(configuration.path.setup + '/nsmarty.js')(app, configuration);
+
 		//console.log(configuration.path.doku + '/templates.js');
-		require(configuration.path.doku + '/templates.js')(app, configuration);
+		require(configuration.path.deliveries + '/templates.js')(app, configuration);
+
+		//Static files
+		require(configuration.path.deliveries + '/static.js')(app, configuration);
+
+		//Doku files
+		require(configuration.path.deliveries + '/doku.js')(app, configuration);
 
 		//Start express
 		var server = app.listen(configuration.server.port, function ()

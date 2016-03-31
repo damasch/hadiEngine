@@ -2,13 +2,14 @@
 /**
  * Requirements
  */
-var fs = require('fs');
-var path = require('path');
-var S = require('string');
-var _ = require('lodash');
-var async = require('async');
-var templateParser = require('./template');
-
+var fs 				= require('fs');
+var path 			= require('path');
+var S 				= require('string');
+var util 			= require('util');
+var _ 				= require('lodash');
+var async 			= require('async');
+var nsmarty 		= require('nsmarty');
+var templateParser 	= require('./template');
 
 
 function readAppDir(configuration, callback)
@@ -33,15 +34,14 @@ function readAppDir(configuration, callback)
 			{
 				tasks.push(function (cb)
 				{
-					var templateDir = path.resolve(scopeDir, template);
 					templateParser.readTemplateDir(configuration, template, scope, scopeDir, function(error, templateN)
 					{
 						if(!error)
 						{
 							result.scopes[scope].push(templateN);
 						}
+						cb();
 					});
-					cb();
 				});
 			});
 		}
@@ -61,21 +61,14 @@ function configure(app, configuration)
 {
 	console.log("deliver templates");
 	//deliver templates
-	app.all('*', function (request, response, next)
+	app.all('/', function (request, response, next)
 	{
 		readAppDir(configuration, function(error, result)
 		{
 			if(!error)
 			{
-				console.log("START -> Get Templates");
-				var markup = "<pre>";
-				markup += JSON.stringify(result.scopes, null, 4);
-				markup += "</pre>";
-				response.send(markup.toString());
-
-				response.end();
-				//console.log(result.scopes);
-				console.log("END -> Get Templates");
+				var stream = nsmarty.assign('templates.tpl', result);
+				stream.pipe(response);
 				return;
 			}
 			//Nope

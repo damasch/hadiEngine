@@ -10,9 +10,10 @@ var async = require('async');
 
 function readTemplateDir(configuration, template, scope, scopeDir, callback)
 {
+	console.log("deliver template\t", template, scope, scopeDir);
+
 	// task callback list
 	var tasks = [];
-	console.log("\tread Template:\t" + template);
 
 	// create new template object
 	var templateN = {};
