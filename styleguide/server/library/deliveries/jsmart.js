@@ -22,11 +22,21 @@ function getTemplatePath(configuration, template)
 	{
 		if(fs.existsSync(configuration.path.templates + template))
 		{
-			return path.normalize(configuration.path.templates + template);
+			template = configuration.path.templates + template;
+			console.log("getTemplatePath --- ", template);
+			return template;
 		}
 		if(fs.existsSync(configuration.path.templates + "/" + template))
 		{
-			return path.normalize(configuration.path.templates + "/" + template);
+			template = configuration.path.templates + "/" + template;
+			console.log("getTemplatePath --- / ", template);
+			return template;
+		} else
+		{
+			template = configuration.path.templates + "/" + template;
+			console.log("getTemplatePath --- f ", template);
+			return template;
+
 		}
 	}
 }
@@ -38,6 +48,7 @@ function renderTemplate(app, configuration, template, object)
 {
 	//var tempalte = template;
 	var templatePath = getTemplatePath(configuration, template);
+
 	if(templatePath)
 	{
 		var tpl = fs.readFileSync(templatePath, {encoding: 'utf-8'});

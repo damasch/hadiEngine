@@ -60,8 +60,7 @@ function configure(app, configuration)
 			{
 				if(!error)
 				{
-					var renderdTemplate = jsmart.renderTemplate(app, configuration, "./doku.tpl", result);
-					console.log(renderdTemplate);
+					var renderdTemplate = jsmart.renderTemplate(app, configuration, "./modules/component.tpl", result);
 					response.send(renderdTemplate);
 					return;
 				}
