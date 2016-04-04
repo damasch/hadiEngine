@@ -9,7 +9,8 @@ var util 			= require('util');
 var _ 				= require('lodash');
 var async 			= require('async');
 var nsmarty 		= require('nsmarty');
-var componentParser 	= require('./component');
+var componentParser = require('./component');
+var jsmart 			= require('./jsmart');
 
 
 function readAppDir(configuration, callback)
@@ -65,14 +66,15 @@ function configure(app, configuration)
 	{
 		readAppDir(configuration, function(error, result)
 		{
+
 			if(!error)
 			{
-				response.send("components");
+				var renderdTemplate = jsmart.renderTemplate(app, configuration, "./modules/components.tpl", result);
+				response.send(renderdTemplate);
 				return;
 			}
-			//Nope
+			next();
 		});
-		next();
 	});
 };
 

@@ -23,10 +23,10 @@
 	module.exports.path.library 		= path.resolve(module.exports.path.server 		+ "/library");
 	module.exports.path.setup 			= path.resolve(module.exports.path.server 		+ "/setup");
 	module.exports.path.app 			= path.resolve(module.exports.path.server 		+ "/app");
+	module.exports.path.templates 		= path.resolve(module.exports.path.server 		+ "/app");
 	module.exports.path.server 			= path.resolve(module.exports.path.library 		+ "/server");
 	module.exports.path.deliveries 		= path.resolve(module.exports.path.library 		+ "/deliveries");
 	module.exports.path.doku 			= path.resolve(module.exports.path.library 		+ "/doku");
-	module.exports.path.templates 		= module.exports.path.app;
 
 	/**
 	 * SERVER
