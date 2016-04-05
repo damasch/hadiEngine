@@ -4,7 +4,6 @@ var path = require('path');
 
 var configuration = require('./setup/configuration.js');
 
-
 console.log("*********************************");
 console.log("*******    STYLEGUIDDE    *******");
 console.log("*********************************");
