@@ -1,3 +1,5 @@
 .idea
 .sass-cache
+**/.DS_Store
 htdocs/css/style.css
+styleguide/node_modules
