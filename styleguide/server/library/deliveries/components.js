@@ -15,20 +15,21 @@ var jsmart 			= require('./jsmart');
 
 function readAppDir(configuration, callback)
 {
-	console.log("read configuration.path.htdocs.app: " + configuration.path.htdocs.app);
 	var tasks = [];
 	var appDir = path.resolve(configuration.path.htdocs.app, "");
 	var result = {};
 	result.scopes = {};
 
 	// Read doku Scope
-	console.log("read configuration.doku.scope: " + configuration.doku.scope);
+	console.log("HADI:\tread configuration.path.htdocs.app: " + configuration.path.htdocs.app);
+	console.log("HADI:\tread configuration.doku.scope: " + configuration.doku.scope);
+
 	_.each(configuration.doku.scope, function(scope)
 	{
 		var scopeDir = path.resolve(appDir, scope);
 		if (fs.existsSync(scopeDir))
 		{
-			console.log("resolve scope: "  + scope );
+			//console.log("HADI:\tresolve scope:\t"  + scope );
 			result.scopes[scope] = [];
 			// var dir = path.resolve(appDir, scope);
 			_.each(fs.readdirSync(path.resolve(appDir, scope)), function(component)
@@ -60,13 +61,11 @@ function readAppDir(configuration, callback)
  */
 function configure(app, configuration)
 {
-	console.log("deliver components");
 	//deliver components
 	app.all('/', function (request, response, next)
 	{
 		readAppDir(configuration, function(error, result)
 		{
-
 			if(!error)
 			{
 				var renderdTemplate = jsmart.renderTemplate(app, configuration, "./modules/components.tpl", result);

@@ -46,7 +46,6 @@ function getComponent(request, configuration, callback)
  */
 function configure(app, configuration)
 {
-	console.log("deliver component");
 	//deliver components
 	app.all('*', function (request, response, next)
 	{

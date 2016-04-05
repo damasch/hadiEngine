@@ -20,14 +20,14 @@ function getTemplatePath(configuration, template)
 
 	if(configuration)
 	{
-		if(fs.existsSync(configuration.path.templates + template))
+		if(fs.existsSync(configuration.path.styleguide.templates + template))
 		{
-			template = configuration.path.templates + template;
+			template = configuration.path.styleguide.templates + template;
 			return template;
 		}
-		if(fs.existsSync(configuration.path.templates + "/" + template))
+		if(fs.existsSync(configuration.path.styleguide.templates + "/" + template))
 		{
-			template = configuration.path.templates + "/" + template;
+			template = configuration.path.styleguide.templates + "/" + template;
 			return template;
 		}
 	}

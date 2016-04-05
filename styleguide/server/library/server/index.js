@@ -15,18 +15,17 @@
 		var app = express();
 		app.use(compress());
 
+		// Setup nSmarty
+		require(configuration.path.styleguide.setup + '/nsmarty.js')(app, configuration);
 
-		//Setup nSmarty
-		require(configuration.path.setup + '/nsmarty.js')(app, configuration);
+		// Static files
+		require(configuration.path.styleguide.deliveries + '/static.js')(app, configuration);
 
-		//Static files
-		require(configuration.path.deliveries + '/static.js')(app, configuration);
+		// Show all components in htdocs/app
+		require(configuration.path.styleguide.deliveries + '/components.js')(app, configuration);
 
-		//console.log(configuration.path.doku + '/components.js');
-		require(configuration.path.deliveries + '/components.js')(app, configuration);
-
-		//Doku files
-		require(configuration.path.deliveries + '/doku.js')(app, configuration);
+		// Doku files for the doku.html files
+		require(configuration.path.styleguide.deliveries + '/doku.js')(app, configuration);
 
 		//Start express
 		var server = app.listen(configuration.server.port, function ()

@@ -13,27 +13,34 @@
 	module.exports.path 				= {};
 	module.exports.path.root 			= path.resolve("../");
 
+	/**
+	 * PATH FOR HTDOCS
+	 */
 	module.exports.path.htdocs 			= {}
 	module.exports.path.htdocs.root 	= path.resolve(module.exports.path.root 			+ "/htdocs");
 	module.exports.path.htdocs.app 		= path.resolve(module.exports.path.htdocs.root 		+ "/app");
 
 
-	module.exports.path.styleguide 		= path.resolve(module.exports.path.root 		+ "/styleguide");
-	module.exports.path.server 			= path.resolve(module.exports.path.styleguide 	+ "/server");
-	module.exports.path.library 		= path.resolve(module.exports.path.server 		+ "/library");
-	module.exports.path.setup 			= path.resolve(module.exports.path.server 		+ "/setup");
-	module.exports.path.app 			= path.resolve(module.exports.path.server 		+ "/app");
-	module.exports.path.templates 		= path.resolve(module.exports.path.server 		+ "/app");
-	module.exports.path.server 			= path.resolve(module.exports.path.library 		+ "/server");
-	module.exports.path.deliveries 		= path.resolve(module.exports.path.library 		+ "/deliveries");
-	module.exports.path.doku 			= path.resolve(module.exports.path.library 		+ "/doku");
+	/**
+	 * PATH FOR STYLEGUIDE
+	 */
+	module.exports.path.styleguide 				= {};
+	module.exports.path.styleguide.root			= path.resolve(module.exports.path.root 				+ "/styleguide");
+	module.exports.path.styleguide.server 		= path.resolve(module.exports.path.styleguide.root 		+ "/server");
+	module.exports.path.styleguide.library 		= path.resolve(module.exports.path.styleguide.server 	+ "/library");
+	module.exports.path.styleguide.setup 		= path.resolve(module.exports.path.styleguide.server 	+ "/setup");
+	module.exports.path.styleguide.app 			= path.resolve(module.exports.path.styleguide.server 	+ "/app");
+	module.exports.path.styleguide.templates 	= path.resolve(module.exports.path.styleguide.server 	+ "/app");
+	module.exports.path.styleguide.server 		= path.resolve(module.exports.path.styleguide.library 	+ "/server");
+	module.exports.path.styleguide.deliveries 	= path.resolve(module.exports.path.styleguide.library 	+ "/deliveries");
+	module.exports.path.styleguide.doku 		= path.resolve(module.exports.path.styleguide.library 	+ "/doku");
 
 	/**
 	 * SERVER
 	 */
 	module.exports.server 				= {};
 	module.exports.server.port 			= 8000;
-	module.exports.server.path 			= path.resolve(module.exports.path.server + "/run.js");
+	module.exports.server.path 			= path.resolve(module.exports.path.styleguide.server + "/run.js");
 
 	module.exports.server.delay 		= {};
 	module.exports.server.delay.statics = { min: 0, max: 0 };

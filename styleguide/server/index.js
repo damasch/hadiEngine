@@ -12,7 +12,7 @@ nodemon(
 {
 	script: configuration.server.path,
 	watch: [__dirname, configuration.path.htdocs.root],
-	ext: 'html js json j2 tpl'
+	ext: 'html js json j2 tpl scss'
 });
 
 

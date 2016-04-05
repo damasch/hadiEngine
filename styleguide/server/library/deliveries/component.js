@@ -10,7 +10,7 @@ var async = require('async');
 
 function readComponentDir(configuration, component, scope, scopeDir, callback)
 {
-	console.log("deliver component\t", component, scope, scopeDir);
+	//console.log("deliver component\t", component, scope, scopeDir);
 
 	// task callback list
 	var tasks = [];

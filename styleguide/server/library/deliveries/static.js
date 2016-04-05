@@ -34,7 +34,7 @@ function configure(app, configuration)
 	app.all('*', function (request, response, next)
 	{
 		//Check internal file
-		if (trySendigFile(path.resolve(configuration.path.server + request.path),
+		if (trySendigFile(path.resolve(configuration.path.styleguide.server + request.path),
 				response, configuration))
 		{
 			return;
