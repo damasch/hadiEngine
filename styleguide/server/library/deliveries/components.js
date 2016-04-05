@@ -68,7 +68,7 @@ function configure(app, configuration)
 		{
 			if(!error)
 			{
-				var renderdTemplate = jsmart.renderTemplate(app, configuration, "./modules/components.tpl", result);
+				var renderdTemplate = jsmart.renderTemplate(app, configuration, "./modules/m-components/view.tpl", result);
 				response.send(renderdTemplate);
 				return;
 			}

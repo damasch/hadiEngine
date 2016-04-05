@@ -53,13 +53,13 @@ function configure(app, configuration)
 		var extension = request.path.split('.').pop();
 		var file = request.path.split('/').pop();
 
-		if(file == "doku.html")
+		if(file == "detail.html")
 		{ 
 			getComponent(request, configuration, function(error, result)
 			{
 				if(!error)
 				{
-					var renderdTemplate = jsmart.renderTemplate(app, configuration, "./modules/m-component/component.tpl", result);
+					var renderdTemplate = jsmart.renderTemplate(app, configuration, "./modules/m-detail/view.tpl", result);
 					response.send(renderdTemplate);
 					return;
 				}

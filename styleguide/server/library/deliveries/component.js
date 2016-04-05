@@ -82,7 +82,7 @@ function readComponentDir(configuration, component, scope, scopeDir, callback)
 		});
 	}
 
-	componentN.dokumentation = "/" + scope + "/" + component + "/doku.html";
+	componentN.dokumentation = "/" + scope + "/" + component + "/detail.html";
 
 	componentN.modelsPath = componentN.directory + "/models";
 	_.each(fs.readdirSync(path.resolve(componentN.directory, "models")), function(model)

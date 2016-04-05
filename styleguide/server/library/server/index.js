@@ -25,7 +25,7 @@
 		require(configuration.path.styleguide.deliveries + '/components.js')(app, configuration);
 
 		// Doku files for the doku.html files
-		require(configuration.path.styleguide.deliveries + '/doku.js')(app, configuration);
+		require(configuration.path.styleguide.deliveries + '/detail.js')(app, configuration);
 
 		//Start express
 		var server = app.listen(configuration.server.port, function ()
