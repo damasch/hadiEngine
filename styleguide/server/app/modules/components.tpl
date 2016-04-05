@@ -1,4 +1,4 @@
-
+<div>
 <h1>Components</h1>
 {foreach from=$scopes item=scope key=scopeName}
 	<h2>{$scopeName}</h2>
@@ -10,3 +10,4 @@
 		</div>
 	{/foreach}
 {/foreach}
+</div>
