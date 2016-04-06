@@ -8,9 +8,7 @@ var S 				= require('string');
 var util 			= require('util');
 var _ 				= require('lodash');
 var async 			= require('async');
-var componentParser = require('./component');
 var nsmarty 		= require('nsmarty');
-var jsmart 			= require('./jsmart');
 
 
 function getComponent(request, configuration, callback)
@@ -24,6 +22,7 @@ function getComponent(request, configuration, callback)
 
 	tasks.push(function (cb)
 	{
+		var componentParser = require(configuration.path.styleguide.deliveries + '/component');
 		componentParser.readComponentDir(configuration, component, scope, scopeDir, function(error, componentN)
 		{
 			if(!error)
@@ -54,17 +53,23 @@ function configure(app, configuration)
 		var file = request.path.split('/').pop();
 
 		if(file == "detail.html")
-		{ 
+		{
 			getComponent(request, configuration, function(error, result)
 			{
 				if(!error)
 				{
-					var renderdTemplate = jsmart.renderTemplate(app, configuration, "./modules/m-detail/view.tpl", result);
+					var jsmart 	= require(configuration.path.styleguide.deliveries + '/jsmart');
+					result.title = 'Detail ' + result.name;
+					result.composition = '/composition/c-detail/view.tpl';
+					var renderdTemplate = jsmart.renderTemplate(app, configuration, "./pages/p-default/view.tpl", result);
 					response.send(renderdTemplate);
 					return;
 				}
 				next();
 			});
+		} else
+		{
+			next();
 		}
 	});
 };

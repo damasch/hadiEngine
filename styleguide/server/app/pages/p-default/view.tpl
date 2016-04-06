@@ -4,10 +4,9 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Hadi Engine - {$title}</title>
-	<link href="/public/css/style.css" rel="stylesheet">
 </head>
 <body>
-	{include file='/navigation.tpl'}
-	{block 'content'}{/block}
+	<h1>Hadiengine</h1>
+	{include file=$composition}
 </body>
 </html>

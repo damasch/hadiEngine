@@ -22,10 +22,13 @@
 		require(configuration.path.styleguide.deliveries + '/static.js')(app, configuration);
 
 		// Show all components in htdocs/app
-		require(configuration.path.styleguide.deliveries + '/components.js')(app, configuration);
+		require(configuration.path.styleguide.views + '/components.js')(app, configuration);
 
 		// Doku files for the doku.html files
-		require(configuration.path.styleguide.deliveries + '/detail.js')(app, configuration);
+		require(configuration.path.styleguide.views + '/detail.js')(app, configuration);
+
+		// Default Page
+		require(configuration.path.styleguide.views + '/page.js')(app, configuration);
 
 		//Start express
 		var server = app.listen(configuration.server.port, function ()

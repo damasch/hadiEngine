@@ -39,6 +39,14 @@ function getTemplatePath(configuration, template)
  */
 function renderTemplate(app, configuration, template, object)
 {
+	console.log("HADI:\trender template:\t" + template);
+	jSmart.prototype.getTemplate = function(name)
+	{
+		var tplPath = getTemplatePath(configuration, name);
+		var tpl = renderTemplate(app, configuration, tplPath, {});
+		return tpl;
+	}
+
 	//var tempalte = template;
 	var templatePath = getTemplatePath(configuration, template);
 

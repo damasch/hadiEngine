@@ -9,9 +9,6 @@ var util 			= require('util');
 var _ 				= require('lodash');
 var async 			= require('async');
 var nsmarty 		= require('nsmarty');
-var componentParser = require('./component');
-var jsmart 			= require('./jsmart');
-
 
 function readAppDir(configuration, callback)
 {
@@ -36,6 +33,7 @@ function readAppDir(configuration, callback)
 			{
 				tasks.push(function (cb)
 				{
+					var componentParser = require(configuration.path.styleguide.deliveries + '/component');
 					componentParser.readComponentDir(configuration, component, scope, scopeDir, function(error, componentN)
 					{
 						if(!error)
@@ -68,7 +66,11 @@ function configure(app, configuration)
 		{
 			if(!error)
 			{
-				var renderdTemplate = jsmart.renderTemplate(app, configuration, "./modules/m-components/view.tpl", result);
+				var jsmart 	= require(configuration.path.styleguide.deliveries + '/jsmart');
+				result.title = 'Overview ' + result.name;
+				result.composition = '/composition/c-overview/view.tpl';
+				var renderdTemplate = jsmart.renderTemplate(app, configuration, "./pages/p-default/view.tpl", result);
+
 				response.send(renderdTemplate);
 				return;
 			}

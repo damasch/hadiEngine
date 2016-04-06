@@ -33,6 +33,7 @@
 	module.exports.path.styleguide.templates 	= path.resolve(module.exports.path.styleguide.server 	+ "/app");
 	module.exports.path.styleguide.server 		= path.resolve(module.exports.path.styleguide.library 	+ "/server");
 	module.exports.path.styleguide.deliveries 	= path.resolve(module.exports.path.styleguide.library 	+ "/deliveries");
+	module.exports.path.styleguide.views	 	= path.resolve(module.exports.path.styleguide.library 	+ "/views");
 	module.exports.path.styleguide.doku 		= path.resolve(module.exports.path.styleguide.library 	+ "/doku");
 
 	/**
