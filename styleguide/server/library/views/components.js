@@ -8,20 +8,19 @@ var S 				= require('string');
 var util 			= require('util');
 var _ 				= require('lodash');
 var async 			= require('async');
-var nsmarty 		= require('nsmarty');
 
-function readAppDir(configuration, callback)
+function readAppDir(callback)
 {
 	var tasks = [];
-	var appDir = path.resolve(configuration.path.htdocs.app, "");
+	var appDir = path.resolve(GLOBAL._hadiEngine.path.htdocs.app, "");
 	var result = {};
 	result.scopes = {};
 
 	// Read doku Scope
-	console.log("HADI:\tread configuration.path.htdocs.app: " + configuration.path.htdocs.app);
-	console.log("HADI:\tread configuration.doku.scope: " + configuration.doku.scope);
+	console.log("HADI:\tread GLOBAL._hadiEngine.path.htdocs.app: " + GLOBAL._hadiEngine.path.htdocs.app);
+	console.log("HADI:\tread GLOBAL._hadiEngine.doku.scope: " + GLOBAL._hadiEngine.doku.scope);
 
-	_.each(configuration.doku.scope, function(scope)
+	_.each(GLOBAL._hadiEngine.doku.scope, function(scope)
 	{
 		var scopeDir = path.resolve(appDir, scope);
 		if (fs.existsSync(scopeDir))
@@ -33,8 +32,8 @@ function readAppDir(configuration, callback)
 			{
 				tasks.push(function (cb)
 				{
-					var componentParser = require(configuration.path.styleguide.deliveries + '/component');
-					componentParser.readComponentDir(configuration, component, scope, scopeDir, function(error, componentN)
+					var componentParser = require(GLOBAL._hadiEngine.path.styleguide.deliveries + '/component');
+					componentParser.readComponentDir(component, scope, scopeDir, function(error, componentN)
 					{
 						if(!error)
 						{
@@ -57,19 +56,19 @@ function readAppDir(configuration, callback)
 /**
  * Configures a dynamic component rendering handler
  */
-function configure(app, configuration)
+function configure(app)
 {
 	//deliver components
 	app.all('/', function (request, response, next)
 	{
-		readAppDir(configuration, function(error, result)
+		readAppDir(function(error, result)
 		{
 			if(!error)
 			{
-				var jsmart 	= require(configuration.path.styleguide.deliveries + '/jsmart');
+				var jsmart 	= require(GLOBAL._hadiEngine.path.styleguide.deliveries + '/jsmart');
 				result.title = 'Overview ' + result.name;
 				result.composition = '/composition/c-overview/view.tpl';
-				var renderdTemplate = jsmart.renderTemplate(app, configuration, "./pages/p-default/view.tpl", result);
+				var renderdTemplate = jsmart.renderTemplate(app, "./pages/p-default/view.tpl", result);
 
 				response.send(renderdTemplate);
 				return;

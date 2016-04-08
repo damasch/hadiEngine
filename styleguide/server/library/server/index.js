@@ -1,42 +1,37 @@
+/**
+ * Requirements
+ */
+var compress 		= require('compression');
+var express 		= require('express');
 
+/**
+ * Configures the application server
+ */
+function configure()
+{
+	//Create server
+	var app = express();
+	app.use(compress());
 
-	/**
-	 * Requirements
-	 */
-	var compress 		= require('compression');
-	var express 		= require('express');
+	// Static files
+	require(GLOBAL._hadiEngine.path.styleguide.deliveries + '/static.js')(app);
 
-	/**
-	 * Configures the application server
-	 */
-	function configure(configuration)
+	// Show all components in htdocs/app
+	require(GLOBAL._hadiEngine.path.styleguide.views + '/components.js')(app);
+
+	// Doku files for the doku.html files
+	require(GLOBAL._hadiEngine.path.styleguide.views + '/detail.js')(app);
+
+	// Default Page
+	require(GLOBAL._hadiEngine.path.styleguide.views + '/page.js')(app);
+
+	//Start express
+	var server = app.listen(GLOBAL._hadiEngine.server.port, function ()
 	{
-		//Create server
-		var app = express();
-		app.use(compress());
+		var host = server.address().address;
+		var port = server.address().port;
+		console.log('Listening at http://localhost:%s', port);
+	});
+}
 
-		// Setup nSmarty
-		require(configuration.path.styleguide.setup + '/nsmarty.js')(app, configuration);
-
-		// Static files
-		require(configuration.path.styleguide.deliveries + '/static.js')(app, configuration);
-
-		// Show all components in htdocs/app
-		require(configuration.path.styleguide.views + '/components.js')(app, configuration);
-
-		// Doku files for the doku.html files
-		require(configuration.path.styleguide.views + '/detail.js')(app, configuration);
-
-		// Default Page
-		require(configuration.path.styleguide.views + '/page.js')(app, configuration);
-
-		//Start express
-		var server = app.listen(configuration.server.port, function ()
-		{
-			var host = server.address().address;
-			var port = server.address().port;
-			console.log('Listening at http://localhost:%s', port);
-		});
-	}
-
-	module.exports = configure;
+module.exports = configure;

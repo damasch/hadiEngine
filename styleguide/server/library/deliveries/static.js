@@ -1,4 +1,3 @@
-
 /**
  * Requirements
  */
@@ -10,14 +9,19 @@ var _ = require('lodash');
 /**
  * Sends the given file if it exists
  */
-function trySendigFile(filename, response, configuration)
+function trySendigFile(filename, response)
 {
 	if (!fs.existsSync(filename))
 	{
 		return false;
 	}
 
-	var delay = Math.round(configuration.server.delay.statics.min + (configuration.server.delay.statics.max - configuration.server.delay.statics.min) * Math.random());
+	var delay = Math.round(
+		GLOBAL._hadiEngine.server.delay.statics.min +
+		(GLOBAL._hadiEngine.server.delay.statics.max -
+		GLOBAL._hadiEngine.server.delay.statics.min) *
+		Math.random());
+
 	_.delay(function()
 	{
 		response.sendFile(filename);
@@ -29,20 +33,18 @@ function trySendigFile(filename, response, configuration)
 /**
  * Configures a static file handler on the express server
  */
-function configure(app, configuration)
+function configure(app)
 {
 	app.all('*', function (request, response, next)
 	{
 		//Check internal file
-		if (trySendigFile(path.resolve(configuration.path.styleguide.server + request.path),
-				response, configuration))
+		if (trySendigFile(path.resolve(GLOBAL._hadiEngine.path.styleguide.server + request.path), response))
 		{
 			return;
 		}
 		next();
 	});
-
-};
+}
 
 /**
  * Public api

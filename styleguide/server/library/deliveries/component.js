@@ -1,4 +1,3 @@
-
 /**
  * Requirements
  */
@@ -8,10 +7,9 @@ var S = require('string');
 var _ = require('lodash');
 var async = require('async');
 
-function readComponentDir(configuration, component, scope, scopeDir, callback)
+function readComponentDir(component, scope, scopeDir, callback)
 {
 	//console.log("deliver component\t", component, scope, scopeDir);
-
 	// task callback list
 	var tasks = [];
 

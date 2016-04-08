@@ -1,4 +1,4 @@
 
-	console.log("restart server");
-	var configuration = require('./../../setup/configuration.js');
-	require('./index.js')(configuration);
+console.log("restart server");
+GLOBAL._hadiEngine = require('./../../setup/configuration.js');
+require('./index.js')();

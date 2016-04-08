@@ -11,23 +11,23 @@ var async 			= require('async');
 var jsmart 			= require('jsmart');
 
 
-function getTemplatePath(configuration, template)
+function getTemplatePath(template)
 {
 	if(fs.existsSync(template))
 	{
 		return template;
 	}
 
-	if(configuration)
+	if(GLOBAL._hadiEngine)
 	{
-		if(fs.existsSync(configuration.path.styleguide.templates + template))
+		if(fs.existsSync(GLOBAL._hadiEngine.path.styleguide.templates + template))
 		{
-			template = configuration.path.styleguide.templates + template;
+			template = GLOBAL._hadiEngine.path.styleguide.templates + template;
 			return template;
 		}
-		if(fs.existsSync(configuration.path.styleguide.templates + "/" + template))
+		if(fs.existsSync(GLOBAL._hadiEngine.path.styleguide.templates + "/" + template))
 		{
-			template = configuration.path.styleguide.templates + "/" + template;
+			template = GLOBAL._hadiEngine.path.styleguide.templates + "/" + template;
 			return template;
 		}
 	}
@@ -37,18 +37,18 @@ function getTemplatePath(configuration, template)
 /**
  * Configures a dynamic template rendering handler
  */
-function renderTemplate(app, configuration, template, object)
+function renderTemplate(app, template, object)
 {
 	console.log("HADI:\trender template:\t" + template);
 	jSmart.prototype.getTemplate = function(name)
 	{
-		var tplPath = getTemplatePath(configuration, name);
-		var tpl = renderTemplate(app, configuration, tplPath, {});
+		var tplPath = getTemplatePath(name);
+		var tpl = renderTemplate(app, tplPath, {});
 		return tpl;
 	}
 
 	//var tempalte = template;
-	var templatePath = getTemplatePath(configuration, template);
+	var templatePath = getTemplatePath(template);
 
 	if(templatePath)
 	{
@@ -61,4 +61,4 @@ function renderTemplate(app, configuration, template, object)
 /**
  * Public api
  */
-module.exports = { renderTemplate : renderTemplate };;
+module.exports = { renderTemplate : renderTemplate };

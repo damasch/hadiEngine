@@ -6,7 +6,8 @@
 	<title>Hadi Engine - {$title}</title>
 </head>
 <body>
-	<h1>Hadiengine</h1>
-	{include file=$composition}
+	<content>
+
+	</content>
 </body>
 </html>
