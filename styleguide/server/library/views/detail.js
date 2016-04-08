@@ -56,11 +56,14 @@ function configure(app)
 			{
 				if(!error)
 				{
+					/*
 					var jsmart 	= require(GLOBAL._hadiEngine.path.styleguide.deliveries + '/jsmart');
 					result.title = 'Detail ' + result.name;
 					result.composition = '/composition/c-detail/view.tpl';
 					var renderdTemplate = jsmart.renderTemplate(app, "./pages/p-default/view.tpl", result);
 					response.send(renderdTemplate);
+					*/
+					response.send("Detail");
 					return;
 				}
 				next();

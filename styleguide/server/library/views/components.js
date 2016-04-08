@@ -16,16 +16,11 @@ function readAppDir(callback)
 	var result = {};
 	result.scopes = {};
 
-	// Read doku Scope
-	console.log("HADI:\tread GLOBAL._hadiEngine.path.htdocs.app: " + GLOBAL._hadiEngine.path.htdocs.app);
-	console.log("HADI:\tread GLOBAL._hadiEngine.doku.scope: " + GLOBAL._hadiEngine.doku.scope);
-
 	_.each(GLOBAL._hadiEngine.doku.scope, function(scope)
 	{
 		var scopeDir = path.resolve(appDir, scope);
 		if (fs.existsSync(scopeDir))
 		{
-			//console.log("HADI:\tresolve scope:\t"  + scope );
 			result.scopes[scope] = [];
 			// var dir = path.resolve(appDir, scope);
 			_.each(fs.readdirSync(path.resolve(appDir, scope)), function(component)
@@ -65,12 +60,14 @@ function configure(app)
 		{
 			if(!error)
 			{
+				/*
 				var jsmart 	= require(GLOBAL._hadiEngine.path.styleguide.deliveries + '/jsmart');
 				result.title = 'Overview ' + result.name;
 				result.composition = '/composition/c-overview/view.tpl';
 				var renderdTemplate = jsmart.renderTemplate(app, "./pages/p-default/view.tpl", result);
-
-				response.send(renderdTemplate);
+				 response.send(renderdTemplate);
+				*/
+				response.send("Components");
 				return;
 			}
 			next();
