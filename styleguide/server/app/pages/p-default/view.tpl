@@ -6,8 +6,6 @@
 	<title>Hadi Engine - {$title}</title>
 </head>
 <body>
-	<content>
-
-	</content>
+	{$composition}
 </body>
 </html>

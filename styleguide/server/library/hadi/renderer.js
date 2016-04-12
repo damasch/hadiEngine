@@ -1,72 +1,92 @@
 "use strict"
+var fs 				= require('fs');
+var _ 				= require('lodash');
+var cheerio 		= require('cheerio');
 
 class Renderer
 {
-	constructor(callback)
+	constructor(composition, pageTemplate, scope)
 	{
-		this.tags = [];
+		let tplPath = scope + pageTemplate;
 		this.modules = [];
-		this.iniRoot = null;
-		this.elements = [];
-		this.selector = '';
-		this.inlineVars = true;
+
+		if(pageTemplate && fs.existsSync(tplPath))
+		{
+			let pageTemplateClass = require(tplPath);
+			this.pageTemplate = new pageTemplateClass();
+		}
+		else
+		{
+			throw new Error("File not found: \t" + tplPath);
+		}
+		var compPath = scope + composition;
+		if(composition && fs.existsSync(compPath))
+		{
+			let compositionR = require(compPath);
+			this.composition = new compositionR();
+		}
+		else
+		{
+			throw new Error("File not found: \t" + compPath);
+		}
 	}
 
-	templateEngineFetch(templateContext, modelContext)
+	registerTemplates(modules)
 	{
+		let renderer = this;
+		let paths = []
+		if(modules)
+		{
+			if(typeof(modules) == "string")
+			{
+				paths.push(modules);
+			}
+			else
+			{
+				paths = modules;
+			}
+		}
+
+		_.each(paths, function(tpath)
+		{
+			if(fs.existsSync(tpath))
+			{
+				let controllerClass = require(tpath);
+				let controller = new controllerClass({});
+				renderer.modules.push(controller);
+			}
+			else
+			{
+				throw new Error("File not found: \t" + compPath);
+			}
+		});
+		let $  = cheerio.load(data.composition);
+		//this.selector = this.modules.join(', ');
+		this.selector = "";
 	}
 
-	fetch(element)
+	render(data)
 	{
-	}
+		let renderer = this;
+		data.composition = this.composition.render();
 
-	getResourcePath(element, resource)
-	{
-	}
+		let $  = cheerio.load(data.composition);
+		/*
+		console.log(this.selector);
 
-	loadFile(file, contenxt)
-	{
-	}
+		console.log(renderer.modules);
 
-	renderOverwrite(element, data)
-	{
-	}
-
-	renderSetup()
-	{
-	}
-
-	render()
-	{
-		console.log(this.modules);
+		$(this.selector).each(function(index, element)
+		{
+			console.log(index);
+		});
+		*/
+		return this.pageTemplate.render(data);
 	}
 
 	renderRecursive(element)
 	{
-	}
 
-	renderMarkup(element)
-	{
-	}
-
-	registerModules(modules)
-	{
-		if(typeof(modules) == "string")
-		{
-			this.modules.push(modules);
-		}
-		else
-		{
-			this.modules = this.modules.concat(modules);
-		}
-	}
-
-	initializeModule(module)
-	{
-	}
-
-	getRegisterdModuleByName(name)
-	{
 	}
 }
 
