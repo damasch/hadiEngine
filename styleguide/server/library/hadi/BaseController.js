@@ -11,6 +11,7 @@ class BaseController
 		this.name = tpath[tpath.length - 1];
 		this.template = dir + "/view.tpl";
 		this.content = fs.readFileSync(this.template);
+		this.title = "default title";
 		this.iniJSmart();
 	}
 

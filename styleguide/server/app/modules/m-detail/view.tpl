@@ -1,3 +1,4 @@
+
 <div class="m-component">
 	<h1 class="m-component-name">{$name}</h1>
 	<h2>Stylesheet</h2>

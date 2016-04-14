@@ -6,6 +6,7 @@ class Controller extends BaseController
 	constructor (data)
 	{
 		super(__dirname, data);
+		this.title = "Page";
 	}
 }
 

@@ -38,7 +38,7 @@ function configure(app)
 			var data = {
 				title: "Page"
 			};
-			var result = renderer.render(data);
+			var result = renderer.render();
 			response.send(result);
 			/*
 			let dPageC = new defaultPageC();

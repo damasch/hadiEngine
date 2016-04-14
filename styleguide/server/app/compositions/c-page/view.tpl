@@ -6,6 +6,9 @@
 	<m-detail>
 
 	</m-detail>
+	<m-navigation>
+
+	</m-navigation>
 	<m-detail>
 
 	</m-detail>

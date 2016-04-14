@@ -46,47 +46,61 @@ class Renderer
 				paths = modules;
 			}
 		}
-
-		_.each(paths, function(tpath)
+		let select = [];
+		for(var i = 0; i < paths.length; i++)
 		{
-			if(fs.existsSync(tpath))
+			if(fs.existsSync(paths[i]))
 			{
-				let controllerClass = require(tpath);
+				let controllerClass = require(paths[i]);
 				let controller = new controllerClass({});
 				renderer.modules.push(controller);
+				select.push(controller.name);
 			}
 			else
 			{
-				throw new Error("File not found: \t" + compPath);
+				throw new Error("File not found: \t" + paths[i]);
 			}
-		});
-		let $  = cheerio.load(data.composition);
-		//this.selector = this.modules.join(', ');
-		this.selector = "";
+		}
+
+		this.selector = select.join(', ');
 	}
 
-	render(data)
+	getRegisterdModuleByName(name)
 	{
 		let renderer = this;
-		data.composition = this.composition.render();
-
-		let $  = cheerio.load(data.composition);
-		/*
-		console.log(this.selector);
-
-		console.log(renderer.modules);
-
-		$(this.selector).each(function(index, element)
+		for(var i = 0; i < renderer.modules.length; i++)
 		{
-			console.log(index);
-		});
-		*/
+			if (renderer.modules[i].name == name)
+			{
+				return renderer.modules[i];
+			}
+		}
+		return;
+	}
+
+	render()
+	{
+		let renderer = this;
+		var data = {};
+		data.title = this.composition.title;
+		data.composition = this.composition.render();
+		let $  = cheerio.load(data.composition);
+		this.renderRecursive($);
+		data.composition = $.html();
+
 		return this.pageTemplate.render(data);
 	}
 
-	renderRecursive(element)
+	renderRecursive($)
 	{
-
+		let renderer = this;
+		$("* > " + this.selector).each(function(index, element)
+		{
+			//console.log(index, element.name);
+			let module = renderer.getRegisterdModuleByName(element.name);
+			//console.log(module.render({}));
+			$(element).html(module.render({}));
+		});
 	}
 }
 
