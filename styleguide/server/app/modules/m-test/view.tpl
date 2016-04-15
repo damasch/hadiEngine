@@ -1,5 +1,8 @@
 
 <div class="m-test">
 	<h3>Test</h3>
-	<content></content>
+	{$bar}
+	<content>
+
+    </content>
 </div>

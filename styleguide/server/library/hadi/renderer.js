@@ -2,7 +2,6 @@
 var fs 				= require('fs');
 var _ 				= require('lodash');
 var cheerio 		= require('cheerio');
-var $ 		        = require('jQuery');
 
 class Renderer
 {
@@ -70,9 +69,10 @@ class Renderer
 	getRegisterdModuleByName(name)
 	{
 		let renderer = this;
+		name = name.toLowerCase();
 		for(var i = 0; i < renderer.modules.length; i++)
 		{
-			if (renderer.modules[i].name == name)
+			if (renderer.modules[i].name.toLowerCase() == name)
 			{
 				return renderer.modules[i];
 			}
@@ -107,6 +107,7 @@ class Renderer
 			element = this.iniRoot;
 		}
 
+        //console.log($(element).children(renderer.selector).length);
 
 		// traverse the dom
 		if($(element).children(renderer.selector).length > 0)
@@ -137,6 +138,7 @@ class Renderer
 
 			// check the renderd result for custom tags
 			// traverse the dom
+
 			if($(element).children(renderer.selector).length > 0)
 			{
 				// find direct child
@@ -175,23 +177,26 @@ class Renderer
 				$root.attr('style', rootStyle + " " + elementStyle);
 			}
 
-			// remove the custom tag name
-			//$(element).children().first().unwrap();
+            $(element).parent().find(element).replaceWith($(element).html());
 		}
 
 		return;
 	}
+
 	renderMarkup(element)
 	{
 		var renderer = this;
-		var $ = renderer.$;
+		//var $ = renderer.$;
 
 		// render template with model
 		var markup = renderer.fetch(element);
-
 		// set the markup in dem Node
+
+        var $ = cheerio.load(markup);
 		var oldMarkup = $(element).html();
-		$(element).html(markup).find("content").replaceWith(oldMarkup);
+        $.root().find("content").replaceWith(oldMarkup);
+
+		$(element).html($.root().html());//.find("content").replaceWith(oldMarkup);
 
 		return;
 	}
@@ -199,69 +204,37 @@ class Renderer
 	{
 		var renderer = this;
 		var $ = renderer.$;
-		/*
-		return "foo";
-		var deferred = $.Deferred();
-
-		// get data.template and data.model
-		var data = renderer.renderSetup(element);
-
-		// load template an Model
-		if(data.template && data.model)
-		{
-			// load Template
-			renderer.loadFile(data.template, 'text').success(function(templateContext, status, jqXHR)
-			{
-				// check raw data
-				// inline json data
-				if(data.rawdata)
-				{
-					// overwirte attributes
-					data.rawdata = renderer.renderOverwrite(element, data.rawdata);
-					var markup = renderer.templateEngineFetch(templateContext, data.rawdata);
-					deferred.resolve(markup);
-				} else
-				{
-					// load model from data.model url
-					renderer.loadFile(data.model, 'json').success(function(modelContext, status, jqXHR)
-					{
-						// overwirte attributes
-						modelContext = renderer.renderOverwrite(element, modelContext);
-						var markup = renderer.templateEngineFetch(templateContext, modelContext);
-						deferred.resolve(markup);
-					}).error(function(xhr, ajaxOptions, thrownError)
-					{
-						console.log("error on model: " + data.model + " " + thrownError, $(element));
-					});
-				}
-			}).error(function(xhr, ajaxOptions, thrownError)
-			{
-				console.log("error on template: " + data.template + " " + thrownError, $(element));
-			});
-		}
-		return deferred;
-		*/
+		var tpl = renderer.getRegisterdModuleByName($(element).prop("tagName"));
+		var data = renderer.renderOverwrite(element, {});
+		console.log(data);
+		return tpl.render(data);
 	}
 
 	renderOverwrite(element, data)
 	{
-		/*
+
 		var renderer = this;
 		var $ = renderer.$;
-		$.each($(element)[0].attributes, function(index, attribute){
-			if(renderer.inlineVars)
-			{
-				data[attribute.name] = attribute.value;
-			} else
-			{
-				if(data.hasOwnProperty(attribute.name))
-				{
-					data[attribute.name] = attribute.value;
-				}
-			}
-		});
-		return data;
-		*/
+        var data = {};
+        //console.log($(element));
+
+        if($(element)[0].attributes){
+            for(var i = 0; i < $(element)[0].attribs.length; i++){
+                var attribute = $(element)[0].attribs[i];
+                console.log(attribute);
+                if(renderer.inlineVars)
+                {
+                    data[attribute.name] = attribute.value;
+                } else
+                {
+                    if(data.hasOwnProperty(attribute.name))
+                    {
+                        data[attribute.name] = attribute.value;
+                    }
+                }
+            }
+        }
+        return data;
 	}
 }
 

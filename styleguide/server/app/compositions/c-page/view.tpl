@@ -1,7 +1,7 @@
 <div>
 	<h1>Default Page</h1>
 	<m-detail>
-		<m-test>
+		<m-test bar="1337">
 			da ist der Test 1
 		</m-test>
 	</m-detail>

@@ -10,6 +10,10 @@ class BaseController
 		this.dir = dir;
 		this.name = tpath[tpath.length - 1];
 		this.template = dir + "/view.tpl";
+		this.model = dir + "/model.json";
+		this.data = fs.readFileSync(this.model);
+        input = new java.io.BufferedReader(new java.io.InputStreamReader(new java.io.FileInputStream(file), encoding)),
+		console.log(this.data.name);
 		this.content = fs.readFileSync(this.template);
 		this.title = "default title";
 		this.iniJSmart();

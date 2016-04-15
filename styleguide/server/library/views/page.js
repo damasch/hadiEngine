@@ -32,6 +32,7 @@ function configure(app)
 
 			renderer.registerTemplates([
 				GLOBAL._hadiEngine.path.styleguide.templates + "/modules/m-detail/controller.js",
+				GLOBAL._hadiEngine.path.styleguide.templates + "/modules/m-test/controller.js",
 				GLOBAL._hadiEngine.path.styleguide.templates + "/modules/m-navigation/controller.js",
 			]);
 
