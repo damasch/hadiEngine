@@ -8,4 +8,5 @@
 		<li>{$modifi}</li>
 	{/foreach}
 	</ul>
+	<content></content>
 </div>
