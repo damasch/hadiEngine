@@ -1,0 +1,18 @@
+{
+  "name" : "hadi-sass-compile",
+  "version" : "0.0.1",
+  "private" : true,
+  "engines" :
+  {
+    "node" : "4.2.x"
+  },
+  "dependencies" :
+  {
+      "express": "*",
+      "gulp": "^3.9.1",
+      "gulp-load-plugins": "^1.2.0",
+      "gulp-postcss": "^6.1.0",
+      "gulp-sass": "^2.2.0",
+      "gulp-util": "^3.0.7"
+  }
+}

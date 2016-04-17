@@ -9,13 +9,13 @@ module.exports = {};
  * PATH
  */
 module.exports.path 				= {};
-module.exports.path.root 			= path.resolve("../");
+module.exports.path.root 			= path.resolve(__dirname + "/../../../");
 
 /**
  * PATH FOR HTDOCS
  */
 module.exports.path.htdocs 			= {}
-module.exports.path.htdocs.root 	= path.resolve(module.exports.path.root 			+ "/htdocs");
+module.exports.path.htdocs.root 	= path.resolve(module.exports.path.root 			+ "/application");
 module.exports.path.htdocs.app 		= path.resolve(module.exports.path.htdocs.root 		+ "/app");
 
 
@@ -46,6 +46,18 @@ module.exports.server.path 			= path.resolve(module.exports.path.styleguide.serv
 module.exports.server.delay 		= {};
 module.exports.server.delay.statics = { min: 0, max: 0 };
 module.exports.server.delay.images 	= { min: 0, max: 0 };
+
+/**
+ * SASS SETUP
+ */
+
+module.exports.sass                 = {};
+module.exports.sass.outputStyle     = 'indented';
+module.exports.sass.includePaths    = [
+    module.exports.path.styleguide.root + '/node_modules/normalize.css',
+    module.exports.path.styleguide.root + '/node_modules/sass-mq'
+];
+
 /**
  * APPLICATION
  */
