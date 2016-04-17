@@ -56,15 +56,24 @@ function configure(app)
 			{
 				if(!error)
 				{
-					/*
-					var jsmart 	= require(GLOBAL._hadiEngine.path.styleguide.deliveries + '/jsmart');
-					result.title = 'Detail ' + result.name;
-					result.composition = '/composition/c-detail/view.tpl';
-					var renderdTemplate = jsmart.renderTemplate(app, "./pages/p-default/view.tpl", result);
-					response.send(renderdTemplate);
-					*/
-					response.send("Detail");
-					return;
+				    /*
+                    let rendererClass = require(GLOBAL._hadiEngine.path.styleguide.hadi + '/Renderer.js');
+                    let renderer = new rendererClass(
+                        '/compositions/c-detail/controller.js',
+                        '/pages/p-default/controller.js',
+                        GLOBAL._hadiEngine.path.styleguide.templates);
+
+                    renderer.registerTemplates([
+                        GLOBAL._hadiEngine.path.styleguide.templates + "/modules/m-detail/controller.js",
+                        GLOBAL._hadiEngine.path.styleguide.templates + "/modules/m-navigation/controller.js",
+                    ]);
+
+                    var data = {
+                        title: "Page"
+                    };
+                    var result = renderer.render();
+                    */
+                    response.send("detail");
 				}
 				next();
 			});

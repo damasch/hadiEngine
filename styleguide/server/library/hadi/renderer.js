@@ -9,6 +9,7 @@ class Renderer
 	{
 		let tplPath = scope + pageTemplate;
 		this.modules = [];
+        this.inlineVars = true;
 
 		if(pageTemplate && fs.existsSync(tplPath))
 		{
@@ -80,16 +81,16 @@ class Renderer
 		return;
 	}
 
-	render()
+	render(data)
 	{
 		let renderer = this;
-		var data = {};
-		data.title = this.composition.title;
-		data.composition = this.composition.render();
-		renderer.$ = cheerio.load(data.composition);
-
-		this.renderRecursive(renderer.$(renderer.iniRoot).first());
-		data.composition = renderer.$.html();
+		var cdata = {};
+		cdata = data;
+		cdata.title = this.composition.title;
+		cdata.composition = this.composition.render(data);
+		renderer.$ = cheerio.load(cdata.composition);
+        this.renderRecursive(renderer.$(renderer.iniRoot).first());
+		cdata.composition = renderer.$.html();
 
 		return this.pageTemplate.render(data);
 	}
@@ -106,8 +107,6 @@ class Renderer
 		{
 			element = this.iniRoot;
 		}
-
-        //console.log($(element).children(renderer.selector).length);
 
 		// traverse the dom
 		if($(element).children(renderer.selector).length > 0)
@@ -205,26 +204,22 @@ class Renderer
 		var renderer = this;
 		var $ = renderer.$;
 		var tpl = renderer.getRegisterdModuleByName($(element).prop("tagName"));
-		var data = renderer.renderOverwrite(element, {});
-		console.log(data);
+		var data = renderer.renderOverwrite(element, tpl.properties);
 		return tpl.render(data);
 	}
 
 	renderOverwrite(element, data)
 	{
-
 		var renderer = this;
 		var $ = renderer.$;
-        var data = {};
-        //console.log($(element));
+        var data = null;
 
-        if($(element)[0].attributes){
-            for(var i = 0; i < $(element)[0].attribs.length; i++){
-                var attribute = $(element)[0].attribs[i];
-                console.log(attribute);
+        if($(element)[0].attribs){
+            data = this.getAttributes(element);
+            _.each(data, function(attribute, index){
                 if(renderer.inlineVars)
                 {
-                    data[attribute.name] = attribute.value;
+                    data[attribute.name] = JSON.parse(attribute.value);
                 } else
                 {
                     if(data.hasOwnProperty(attribute.name))
@@ -232,10 +227,24 @@ class Renderer
                         data[attribute.name] = attribute.value;
                     }
                 }
-            }
+            });
         }
         return data;
 	}
+
+	getAttributes(element)
+    {
+        var renderer = this;
+        var $ = renderer.$;
+        var data = [];
+        _.each($(element)[0].attribs, function(index, attribute){
+            data.push({
+                name: attribute,
+                value: $(element)[0].attribs[attribute]
+            })
+        });
+        return data;
+    }
 }
 
 module.exports = Renderer;

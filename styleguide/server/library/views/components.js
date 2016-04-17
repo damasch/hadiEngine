@@ -1,3 +1,4 @@
+'use strict';
 
 /**
  * Requirements
@@ -60,14 +61,26 @@ function configure(app)
 		{
 			if(!error)
 			{
-				/*
-				var jsmart 	= require(GLOBAL._hadiEngine.path.styleguide.deliveries + '/jsmart');
-				result.title = 'Overview ' + result.name;
-				result.composition = '/composition/c-overview/view.tpl';
-				var renderdTemplate = jsmart.renderTemplate(app, "./pages/p-default/view.tpl", result);
-				 response.send(renderdTemplate);
-				*/
-				response.send("Components");
+                let rendererClass = require(GLOBAL._hadiEngine.path.styleguide.hadi + '/Renderer.js');
+                let renderer = new rendererClass(
+                    '/compositions/c-overview/controller.js',
+                    '/pages/p-default/controller.js',
+                    GLOBAL._hadiEngine.path.styleguide.templates);
+
+                renderer.registerTemplates([
+                    GLOBAL._hadiEngine.path.styleguide.templates + "/modules/m-detail/controller.js",
+                    GLOBAL._hadiEngine.path.styleguide.templates + "/modules/m-scopes/controller.js",
+                    GLOBAL._hadiEngine.path.styleguide.templates + "/modules/m-components/controller.js",
+                    GLOBAL._hadiEngine.path.styleguide.templates + "/modules/m-component/controller.js",
+                    GLOBAL._hadiEngine.path.styleguide.templates + "/modules/m-test/controller.js",
+                    GLOBAL._hadiEngine.path.styleguide.templates + "/modules/m-navigation/controller.js",
+                ]);
+
+                var data = {
+                    title: "Page"
+                };
+                var result = renderer.render(result);
+                response.send(result);
 				return;
 			}
 			next();

@@ -26,6 +26,7 @@ module.exports.path.styleguide 				= {};
 module.exports.path.styleguide.root			= path.resolve(module.exports.path.root 				+ "/styleguide");
 module.exports.path.styleguide.server 		= path.resolve(module.exports.path.styleguide.root 		+ "/server");
 module.exports.path.styleguide.library 		= path.resolve(module.exports.path.styleguide.server 	+ "/library");
+module.exports.path.styleguide.public 		= path.resolve(module.exports.path.styleguide.server 	+ "/public");
 module.exports.path.styleguide.setup 		= path.resolve(module.exports.path.styleguide.server 	+ "/setup");
 module.exports.path.styleguide.app 			= path.resolve(module.exports.path.styleguide.server 	+ "/app");
 module.exports.path.styleguide.templates 	= path.resolve(module.exports.path.styleguide.server 	+ "/app");

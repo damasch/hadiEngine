@@ -9,8 +9,6 @@ var async = require('async');
 
 function readComponentDir(component, scope, scopeDir, callback)
 {
-	//console.log("deliver component\t", component, scope, scopeDir);
-	// task callback list
 	var tasks = [];
 
 	// create new component object
@@ -76,7 +74,6 @@ function readComponentDir(component, scope, scopeDir, callback)
 				componentN.style.modifier = modifiers;
 				cb();
 			});
-			//console.log(data);
 		});
 	}
 
