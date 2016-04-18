@@ -205,6 +205,7 @@ class Renderer
 		var $ = renderer.$;
 		var tpl = renderer.getRegisterdModuleByName($(element).prop("tagName"));
 		var data = renderer.renderOverwrite(element, tpl.properties);
+		console.log(data.components);
 		return tpl.render(data);
 	}
 
@@ -219,7 +220,7 @@ class Renderer
             _.each(data, function(attribute, index){
                 if(renderer.inlineVars)
                 {
-                    data[attribute.name] = JSON.parse(attribute.value);
+                    data[attribute.name] = attribute.value;
                 } else
                 {
                     if(data.hasOwnProperty(attribute.name))
@@ -227,6 +228,14 @@ class Renderer
                         data[attribute.name] = attribute.value;
                     }
                 }
+            });
+
+            $(element).find("data").each(function (index, obj) {
+                var name = $(obj)[0].attribs["name"];
+                var value = JSON.parse($(obj).text());
+                //var value = JSON.parse($(obj).text());
+                $(obj).remove();
+                data[name] = value;
             });
         }
         return data;

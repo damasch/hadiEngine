@@ -1,4 +1,8 @@
 <div class="c-overview">
     <h1>Overview</h1>
-    <m-scopes scopes='{$scopes|json_encode}'></m-scopes>
+    <m-scopes>
+        <data name="scopes">
+            {$scopes|json_encode}
+        </data>
+    </m-scopes>
 </div>

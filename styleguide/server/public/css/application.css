@@ -364,23 +364,48 @@ html,
 body {
   color: #000000;
   font-size: 16px;
-  font-family: Open Sans; }
+  font-weight: normal; }
+
+h1, h2, h3, h4, h5, h6 {
+  font-weight: normal; }
 
 * {
   padding: 0px;
   margin: 0px;
   box-sizing: border-box; }
 
+.c-overview {
+  max-width: 1024px;
+  margin: 0 auto;
+  padding: 8px; }
+
 .m-scopes {
-  background-color: lightgrey; }
+  padding: 4px; }
+  .m-scopes-headline {
+    margin-bottom: 16px; }
+  .m-scopes-subheadline {
+    margin-bottom: 16px; }
 
 .m-components {
-  border: 1px solid red;
   display: flex;
-  flex-wrap: wrap; }
+  flex-wrap: wrap;
+  margin-bottom: 24px;
+  padding: 8px 8px 14px 8px; }
 
 .m-component {
   flex: 1 1 auto;
-  min-width: 33%;
-  max-width: 33%;
-  padding: 4px; }
+  min-width: calc(33% - 10px);
+  max-width: calc(33% - 10px);
+  box-shadow: 0px 6px 3px 1px #aaa;
+  margin-right: 16px;
+  margin-bottom: 16px;
+  background-color: #EBEFE7;
+  min-height: 120px; }
+  .m-component:nth-child(3n) {
+    margin-right: 0px; }
+  .m-component-headline {
+    padding: 8px 16px 8px 16px;
+    color: white;
+    background-color: #2B2922; }
+  .m-component-summary {
+    padding: 8px 16px 8px 16px; }

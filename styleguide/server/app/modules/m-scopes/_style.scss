@@ -1,4 +1,12 @@
 
 .m-scopes {
-    background-color: lightgrey;
+    padding: 4px;
+
+    &-headline {
+        margin-bottom: 16px;
+    }
+
+    &-subheadline {
+        margin-bottom: 16px;
+    }
 }

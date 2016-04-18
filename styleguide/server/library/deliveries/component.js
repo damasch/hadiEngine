@@ -47,9 +47,9 @@ function readComponentDir(component, scope, scopeDir, callback)
 	}
 
 	// get style scss
-	if(fs.existsSync(componentN.directory + "/style.scss"))
+	if(fs.existsSync(componentN.directory + "/_style.scss"))
 	{
-		componentN.style.scss = componentN.directory + "/style.scss";
+		componentN.style.scss = componentN.directory + "/_style.scss";
 		componentN.style.modifier = "";
 
 		tasks.push(function (cb)
