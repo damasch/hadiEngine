@@ -1,3 +1,4 @@
+'use strict';
 
 /**
  * Requirements
@@ -9,8 +10,13 @@ var util 			= require('util');
 var _ 				= require('lodash');
 var async 			= require('async');
 
-function getComponent(request, callback)
+function getComponent(request)
 {
+    //console.log(GLOBAL._hadiEngine.path.styleguide.hadi + '/Component.js');
+    let componentClass = require(GLOBAL._hadiEngine.path.styleguide.hadi + '/Component.js');
+    let component = new componentClass(request.path);
+    console.log(component);
+    /*
 	var tasks = [];
 	var path = request.path.split('/');
 	var scope = path[1];
@@ -36,6 +42,7 @@ function getComponent(request, callback)
 	{
 		callback(error, componentR);
 	});
+	*/
 }
 
 /**
@@ -52,11 +59,12 @@ function configure(app)
 
 		if(file == "detail.html")
 		{
+            getComponent(request);
+		    /*
 			getComponent(request, function(error, result)
 			{
 				if(!error)
 				{
-				    /*
                     let rendererClass = require(GLOBAL._hadiEngine.path.styleguide.hadi + '/Renderer.js');
                     let renderer = new rendererClass(
                         '/compositions/c-detail/controller.js',
@@ -72,11 +80,12 @@ function configure(app)
                         title: "Page"
                     };
                     var result = renderer.render();
-                    */
                     response.send("detail");
 				}
 				next();
 			});
+			*/
+            next();
 		} else
 		{
 			next();
