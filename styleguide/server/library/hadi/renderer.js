@@ -5,32 +5,12 @@ var cheerio 		= require('cheerio');
 
 class Renderer
 {
-	constructor(composition, pageTemplate, scope)
+	constructor(template)
 	{
-		let tplPath = scope + pageTemplate;
+        this.pageTemplate = template;
 		this.modules = [];
         this.inlineVars = true;
-
-		if(pageTemplate && fs.existsSync(tplPath))
-		{
-			let pageTemplateClass = require(tplPath);
-			this.pageTemplate = new pageTemplateClass();
-		}
-		else
-		{
-			throw new Error("File not found: \t" + tplPath);
-		}
-		var compPath = scope + composition;
-		if(composition && fs.existsSync(compPath))
-		{
-			let compositionR = require(compPath);
-			this.composition = new compositionR();
-		}
-		else
-		{
-			throw new Error("File not found: \t" + compPath);
-		}
-		this.iniRoot = "*"
+		this.iniRoot = "*";
 	}
 
 	registerTemplates(modules)
@@ -84,15 +64,9 @@ class Renderer
 	render(data)
 	{
 		let renderer = this;
-		var cdata = {};
-		cdata = data;
-		cdata.title = this.composition.title;
-		cdata.composition = this.composition.render(data);
-		renderer.$ = cheerio.load(cdata.composition);
+		renderer.$ = cheerio.load(this.pageTemplate.render(data));
         this.renderRecursive(renderer.$(renderer.iniRoot).first());
-		cdata.composition = renderer.$.html();
-
-		return this.pageTemplate.render(data);
+		return renderer.$.html();
 	}
 
 	renderRecursive(element)
@@ -205,7 +179,6 @@ class Renderer
 		var $ = renderer.$;
 		var tpl = renderer.getRegisterdModuleByName($(element).prop("tagName"));
 		var data = renderer.renderOverwrite(element, tpl.properties);
-		console.log(data.components);
 		return tpl.render(data);
 	}
 
@@ -231,11 +204,20 @@ class Renderer
             });
 
             $(element).find("data").each(function (index, obj) {
-                var name = $(obj)[0].attribs["name"];
-                var value = JSON.parse($(obj).text());
-                //var value = JSON.parse($(obj).text());
-                $(obj).remove();
-                data[name] = value;
+                if($(obj).prop("tagName").toLowerCase() == "data") {
+                    var name = $(obj)[0].attribs["name"];
+                    var value = JSON.parse($(obj).text());
+                    //var value = JSON.parse($(obj).text())
+                    $(obj).remove();
+                    if(value) {
+                        if(name) {
+                            data[name] = value;
+                        } else
+                        {
+                            data = value;
+                        }
+                    }
+                }
             });
         }
         return data;

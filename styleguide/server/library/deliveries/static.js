@@ -48,12 +48,10 @@ function configure(app)
     app.all('/styleguide/*', function (request, response, next)
     {
         console.log("SCOPE; " + "styleguide");
-        console.log(request.path);
 
         var appl = request.path.split('/');
         appl.splice(1,1);
         appl = appl.join('/');
-        console.log(GLOBAL._hadiEngine.path.styleguide.public, appl);
 
         //Check internal file
         if (trySendigFile(path.resolve(GLOBAL._hadiEngine.path.styleguide.public + appl), response))

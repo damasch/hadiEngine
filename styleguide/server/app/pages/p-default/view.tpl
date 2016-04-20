@@ -8,6 +8,7 @@
 </head>
 <body>
     <div class="application">
+        <m-navigation></m-navigation>
         {$composition}
     </div>
 </body>

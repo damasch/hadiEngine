@@ -24,22 +24,30 @@ function configure(app)
 
 		if(file == "page.html")
 		{
-			let rendererClass = require(GLOBAL._hadiEngine.path.styleguide.hadi + '/Renderer.js');
-			let renderer = new rendererClass(
-				'/compositions/c-page/controller.js',
-				'/pages/p-default/controller.js',
-				GLOBAL._hadiEngine.path.styleguide.templates);
+            var data = {};
 
-			renderer.registerTemplates([
-				GLOBAL._hadiEngine.path.styleguide.templates + "/modules/m-detail/controller.js",
-				GLOBAL._hadiEngine.path.styleguide.templates + "/modules/m-test/controller.js",
-				GLOBAL._hadiEngine.path.styleguide.templates + "/modules/m-navigation/controller.js",
-			]);
+            let compositionClass = require(GLOBAL._hadiEngine.path.styleguide.templates + '/compositions/c-page/controller.js');
+            let composition = new compositionClass();
 
-			var data = {
-				title: "Page"
-			};
-			var result = renderer.render(data);
+            let rendererClass = require(GLOBAL._hadiEngine.path.styleguide.hadi + '/Renderer.js');
+            let renderer = new rendererClass(composition);
+            renderer.registerTemplates([
+                GLOBAL._hadiEngine.path.styleguide.templates + "/modules/m-detail/controller.js",
+                GLOBAL._hadiEngine.path.styleguide.templates + "/modules/m-test/controller.js",
+                GLOBAL._hadiEngine.path.styleguide.templates + "/modules/m-navigation/controller.js",
+            ]);
+            var result = "default";
+            data.title = "Page";
+            data.composition = renderer.render({});
+
+            let pageClass = require(GLOBAL._hadiEngine.path.styleguide.templates + '/pages/p-default/controller.js');
+            let page = new pageClass();
+            renderer = new rendererClass(page);
+            renderer.registerTemplates([
+                GLOBAL._hadiEngine.path.styleguide.templates + "/modules/m-navigation/controller.js"
+            ]);
+            result = renderer.render(data);
+
 			response.send(result);
 			return;
 		}
