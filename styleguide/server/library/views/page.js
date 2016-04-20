@@ -26,25 +26,25 @@ function configure(app)
 		{
             var data = {};
 
-            let compositionClass = require(GLOBAL._hadiEngine.path.styleguide.templates + '/compositions/c-page/controller.js');
+            let compositionClass = require(hadiEngine.path.styleguide.templates + '/compositions/c-page/controller.js');
             let composition = new compositionClass();
 
-            let rendererClass = require(GLOBAL._hadiEngine.path.styleguide.hadi + '/Renderer.js');
+            let rendererClass = require(hadiEngine.path.styleguide.hadi + '/Renderer.js');
             let renderer = new rendererClass(composition);
             renderer.registerTemplates([
-                GLOBAL._hadiEngine.path.styleguide.templates + "/modules/m-detail/controller.js",
-                GLOBAL._hadiEngine.path.styleguide.templates + "/modules/m-test/controller.js",
-                GLOBAL._hadiEngine.path.styleguide.templates + "/modules/m-navigation/controller.js",
+                hadiEngine.path.styleguide.templates + "/modules/m-detail/controller.js",
+                hadiEngine.path.styleguide.templates + "/modules/m-test/controller.js",
+                hadiEngine.path.styleguide.templates + "/modules/m-navigation/controller.js",
             ]);
             var result = "default";
             data.title = "Page";
             data.composition = renderer.render({});
 
-            let pageClass = require(GLOBAL._hadiEngine.path.styleguide.templates + '/pages/p-default/controller.js');
+            let pageClass = require(hadiEngine.path.styleguide.templates + '/pages/p-default/controller.js');
             let page = new pageClass();
             renderer = new rendererClass(page);
             renderer.registerTemplates([
-                GLOBAL._hadiEngine.path.styleguide.templates + "/modules/m-navigation/controller.js"
+                hadiEngine.path.styleguide.templates + "/modules/m-navigation/controller.js"
             ]);
             result = renderer.render(data);
 

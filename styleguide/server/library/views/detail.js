@@ -12,8 +12,8 @@ var async 			= require('async');
 
 function getComponent(request)
 {
-    //console.log(GLOBAL._hadiEngine.path.styleguide.hadi + '/Component.js');
-    let componentClass = require(GLOBAL._hadiEngine.path.styleguide.hadi + '/Component.js');
+    //console.log(hadiEngine.path.styleguide.hadi + '/Component.js');
+    let componentClass = require(hadiEngine.path.styleguide.hadi + '/Component.js');
     let component = new componentClass(request.path);
     console.log(component);
     /*
@@ -21,12 +21,12 @@ function getComponent(request)
 	var path = request.path.split('/');
 	var scope = path[1];
 	var component = path[2];
-	var scopeDir = GLOBAL._hadiEngine.path.htdocs.app + "/" + scope;
+	var scopeDir = hadiEngine.path.htdocs.app + "/" + scope;
 	var componentR = null;
 
 	tasks.push(function (cb)
 	{
-		var componentParser = require(GLOBAL._hadiEngine.path.styleguide.deliveries + '/component');
+		var componentParser = require(hadiEngine.path.styleguide.deliveries + '/component');
 		componentParser.readComponentDir(component, scope, scopeDir, function(error, componentN)
 		{
 			if(!error)
@@ -65,15 +65,15 @@ function configure(app)
 			{
 				if(!error)
 				{
-                    let rendererClass = require(GLOBAL._hadiEngine.path.styleguide.hadi + '/Renderer.js');
+                    let rendererClass = require(hadiEngine.path.styleguide.hadi + '/Renderer.js');
                     let renderer = new rendererClass(
                         '/compositions/c-detail/controller.js',
                         '/pages/p-default/controller.js',
-                        GLOBAL._hadiEngine.path.styleguide.templates);
+                        hadiEngine.path.styleguide.templates);
 
                     renderer.registerTemplates([
-                        GLOBAL._hadiEngine.path.styleguide.templates + "/modules/m-detail/controller.js",
-                        GLOBAL._hadiEngine.path.styleguide.templates + "/modules/m-navigation/controller.js",
+                        hadiEngine.path.styleguide.templates + "/modules/m-detail/controller.js",
+                        hadiEngine.path.styleguide.templates + "/modules/m-navigation/controller.js",
                     ]);
 
                     var data = {

@@ -1,5 +1,5 @@
 "use strict"
-let BaseController = require(GLOBAL._hadiEngine.path.styleguide.hadi + '/BaseController.js');
+let BaseController = require(hadiEngine.path.styleguide.hadi + '/BaseController.js');
 
 class Controller extends BaseController
 {

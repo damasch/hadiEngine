@@ -31,7 +31,7 @@ class Component {
         var dir = dir.split('/');
         this.scope = dir[1];
         this.name = dir[2];
-        this.directory = path.resolve(GLOBAL._hadiEngine.path.htdocs.app, this.scope);
+        this.directory = path.resolve(hadiEngine.path.htdocs.app, this.scope);
         this.directory = path.resolve(this.directory, this.name);
     }
 

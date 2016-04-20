@@ -18,16 +18,16 @@ function getTemplatePath(template)
 		return template;
 	}
 
-	if(GLOBAL._hadiEngine)
+	if(hadiEngine)
 	{
-		if(fs.existsSync(GLOBAL._hadiEngine.path.styleguide.templates + template))
+		if(fs.existsSync(hadiEngine.path.styleguide.templates + template))
 		{
-			template = GLOBAL._hadiEngine.path.styleguide.templates + template;
+			template = hadiEngine.path.styleguide.templates + template;
 			return template;
 		}
-		if(fs.existsSync(GLOBAL._hadiEngine.path.styleguide.templates + "/" + template))
+		if(fs.existsSync(hadiEngine.path.styleguide.templates + "/" + template))
 		{
-			template = GLOBAL._hadiEngine.path.styleguide.templates + "/" + template;
+			template = hadiEngine.path.styleguide.templates + "/" + template;
 			return template;
 		}
 	}

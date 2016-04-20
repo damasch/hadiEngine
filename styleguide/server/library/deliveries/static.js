@@ -17,9 +17,9 @@ function trySendigFile(filename, response)
 	}
 
 	var delay = Math.round(
-		GLOBAL._hadiEngine.server.delay.statics.min +
-		(GLOBAL._hadiEngine.server.delay.statics.max -
-		GLOBAL._hadiEngine.server.delay.statics.min) *
+		hadiEngine.server.delay.statics.min +
+		(hadiEngine.server.delay.statics.max -
+		hadiEngine.server.delay.statics.min) *
 		Math.random());
 
 	_.delay(function()
@@ -38,7 +38,7 @@ function configure(app)
 	app.all('*', function (request, response, next)
 	{
 		//Check internal file
-		if (trySendigFile(path.resolve(GLOBAL._hadiEngine.path.styleguide.server + request.path), response))
+		if (trySendigFile(path.resolve(hadiEngine.path.styleguide.server + request.path), response))
 		{
 			return;
 		}
@@ -54,7 +54,7 @@ function configure(app)
         appl = appl.join('/');
 
         //Check internal file
-        if (trySendigFile(path.resolve(GLOBAL._hadiEngine.path.styleguide.public + appl), response))
+        if (trySendigFile(path.resolve(hadiEngine.path.styleguide.public + appl), response))
         {
             return;
         }
