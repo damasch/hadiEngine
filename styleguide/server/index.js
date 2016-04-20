@@ -4,7 +4,6 @@ var path = require('path');
 
 var configuration = require('./setup/configuration.js');
 
-
 console.log("*********************************");
 console.log("*******    STYLEGUIDDE    *******");
 console.log("*********************************");
@@ -15,6 +14,3 @@ nodemon(
 	watch: [__dirname, configuration.path.htdocs.root],
 	ext: 'html js json tpl scss'
 });
-
-
-
