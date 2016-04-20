@@ -9,7 +9,7 @@ module.exports = {};
  * PATH
  */
 module.exports.path 				= {};
-module.exports.path.root 			= path.resolve(__dirname + "/../../../");
+module.exports.path.root 			= path.dirname(path.dirname(path.dirname(path.dirname(path.dirname(require.main.filename)))));
 
 /**
  * PATH FOR HTDOCS
